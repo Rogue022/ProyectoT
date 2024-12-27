@@ -10,27 +10,27 @@
     <link href="CSS/HojaDeEstilos.css" rel="stylesheet"> 
 </head>
 <body>
-    <<header>
-        <section class="primerContenedor">
+    <header>
+        <section class="ContenedorHeader">
             <div>
                 <img src="ImgInicio/ipnlogo.png" alt="IPN Logo" width="150" height="100">
             </div>
             <div>
-                <h1 class="tituloPrincipal">Bienvenido al sistema de información de exámenes propedéuticos de la ESIME Culhuacán</h1>
+                <h1>Bienvenido al sistema de información de exámenes propedéuticos de la ESIME Culhuacán</h1>
             </div>
             <div>
                 <img src="ImgInicio/esimelogo.png" alt="ESIME Logo" width="80" height="100">
             </div>
         </section>
-        <section class="primerContenedor subtitulo">
+        <section class="ContenedorHeader Subtitulo">
             <h3>Por favor selecciona tu rol</h3>
         </section>
     </header>
     
     <main>
-        <div class="navBG">
-            <section class="barraPrincipal contenedor"> 
-                <div class="cambio">
+        <section class="ContenedorMain"> 
+            <a href="ParteAdmin/PagAdmin.html" class="Pill">
+                
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
                         <path d="M12 16h-8a1 1 0 0 1 -1 -1v-10a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v7"></path>
                         <path d="M7 20h5"></path>
@@ -43,37 +43,37 @@
                         <path d="M15.97 17.25l1.3 .75"></path>
                         <path d="M20.733 20l1.3 .75"></path>
                     </svg>
-                    <p><a href="ParteAdmin/PagAdmin.html"> Administrador </a></p>
-                </div>  
-                <div class="cambio">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-                        <path d="M8 4h-2l-3 10"></path>
-                        <path d="M16 4h2l3 10"></path>
-                        <path d="M10 16l4 0"></path>
-                        <path d="M21 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
-                        <path d="M10 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
-                    </svg>
-                    <p><a href="Maestro/PagMaestro.html"> Mestro </a></p>
-                </div>
-                <div class="cambio">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-                        <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
-                        <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
-                    </svg>
-                    <p><a href="Alumno/PagAlumno.html"> Alumno </a></p>
-                </div>
-            </section>
-        </div>
-    </main>
-    <footer>
-        <section>
-            <div>   
-                <p><i>Página elaborada con amor por y para la comunidad de la ESIME Culhuacán</i></p>
-            </div>
+                    <p> Administrador </p>
+                
+            </a>
+            <a href="Maestro/PagMaestro.html" class="Pill">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                    <path d="M8 4h-2l-3 10"></path>
+                    <path d="M16 4h2l3 10"></path>
+                    <path d="M10 16l4 0"></path>
+                    <path d="M21 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+                    <path d="M10 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+                </svg>
+                <p> Maestro </p>
+            </a>
+            <a href="Alumno/PagAlumno.html" class="Pill">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                    <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
+                    <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
+                </svg>
+                <p> Alumno </p>
+            </a>
         </section>
-        <section>
+    </main>
+
+    <footer>
+
+        <section class="ContenedorFin">
+            <div class="ContCol1">   
+                <p>Página elaborada para titulación de Ingeniería en Computación</p>
+            </div>
             <div>
-                <p><a href="Creditos/PagCreditos.html"> Créditos </a></p>
+                <a href="Creditos/PagCreditos.html" class="Pill"> Créditos </a>
             </div>
         </section>
     </footer>

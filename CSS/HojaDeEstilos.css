@@ -1,0 +1,73 @@
+:root{ /*Custom properties:*/
+    --blanco: #ffffff;
+    --oscuro: #183a57;
+    --primario: #bec799;
+
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 16px;
+    
+}
+/*Header*/
+
+.ContenedorHeader{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 2rem;
+}
+
+.Subtitulo{
+    display: block;
+}
+
+/*Main*/
+.ContenedorMain{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 10rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+/*Footer*/
+.ContenedorFin{
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    gap: 26rem;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.ContCol1{
+    font-size: x-small;
+    font-style: italic;
+}
+
+.Pill{
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    margin: 0.255rem;
+    border-radius: 1em;
+    border: none;
+    outline: none;
+    background: #dddddd;
+    cursor: pointer;
+}
+
+.Pill:not(.Pill--selected):hover {
+    background: #cccccc;
+    
+}
+
+.Pill--selected{
+    background: #009578;
+    color: #ffffff;
+}
