@@ -19,6 +19,7 @@ body{
     align-items: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 2rem;
+    width: auto;
 }
 
 .Subtitulo{
@@ -34,7 +35,7 @@ body{
     padding: 1.5rem;
     gap: 10rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+    
 }
 
 /*Footer*/
@@ -44,6 +45,9 @@ body{
     gap: 26rem;
     align-items: baseline;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .ContCol1{
@@ -68,6 +72,12 @@ body{
 }
 
 .Pill--selected{
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    margin: 0.255rem;
+    border-radius: 1em;
+    border: none;
+    outline: none;
     background: #009578;
     color: #ffffff;
 }
