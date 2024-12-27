@@ -1,0 +1,8 @@
+.ContenedorSeccion{
+    display: flex;
+    gap: 3rem;
+}
+
+.ContSecc2{
+    background: #f5cfcf;
+}

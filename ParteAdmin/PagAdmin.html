@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Exámenes propedéuticos</title>
+    <link rel="preload" href="CSS/normalize.css" as="style">
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link href="CSSAdm/CSSAdm.css" rel="stylesheet"> 
 </head>
 <body>
     <header>
@@ -15,17 +18,13 @@
         </section>
     </header>
     <main>
-        <section>
+        <div class="ContenedorSeccion">
+        <section >
             
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button type="submit" name="submit">Aceptar</button>
-                
-            </form>
             <br>
 
             <form>
-                <label for="Examen">Examen: </label>
+                <label for="Examen" class="Pill">Examen: </label>
                 <br><input type="radio" name="Examen" id="Examen" value="1" required/> Inicio
                 <br><input type="radio" name="Examen" id="Examen" value="2" required/> Final
                 <br>
@@ -59,9 +58,11 @@
                 <input type="submit" value="Ingresar datos"  />
             </form>
         </section>
-        <section>
-
+        <section class="ContSecc2">
+            <h1>SeccionPDF</h1>
+            <iframe src="https://drive.google.com/file/d/1YFe365sgjxcGjyavoXceCZ9S1OnVoJkT/view?usp=drive_link" width="700" height="600"></iframe>
         </section>
+    </div>
     </main>
     
 </body>
