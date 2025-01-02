@@ -60,7 +60,7 @@
         </section>
         <section class="ContSecc2">
             <h1>SeccionPDF</h1>
-            <iframe src="https://drive.google.com/file/d/1YFe365sgjxcGjyavoXceCZ9S1OnVoJkT/view?usp=drive_link" width="700" height="600"></iframe>
+            <iframe src="" width="700" height="600"></iframe>
         </section>
     </div>
     </main>
