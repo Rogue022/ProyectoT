@@ -1,18 +1,17 @@
-<?php
-echo "¡Hola, mundo!";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Precarga de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <!--Normalización: -->
-    <link rel="preload" href="CSS/normalize.css" as="style">
-    <link rel="stylesheet" href="CSS/normalize.css">
-    <link href="CSS/HojaDeEstilos.css" rel="stylesheet"> 
-    <a name="Inicio"></a>
+    <title>Bienvenido</title>
+
+    <!--Normalización de CSS y hoja de estilos -->
+    <link rel="preload" href="CSSInicio/normalize.css" as="style">
+    <link rel="stylesheet" href="CSSInicio/normalize.css">
+    <link href="CSSInicio/HojaDeEstilos.css" rel="stylesheet"> 
+    <!-- -->
+    
 </head>
 <body>
     <header>
