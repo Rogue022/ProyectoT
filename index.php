@@ -1,3 +1,7 @@
+<?php
+echo "¡Hola, mundo!";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,7 @@
     
     <main>
         <section class="ContenedorMain"> 
-            <a href="ParteAdmin/PagAdmin.html" class="Pill">
+            <a href="ParteAdmin/PagAdmin.php" class="Pill">
                 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
                         <path d="M12 16h-8a1 1 0 0 1 -1 -1v-10a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v7"></path>

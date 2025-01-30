@@ -12,7 +12,7 @@
     <header>
         <section>
             <h1> 
-                Captura de elementos por bloque PDF
+                Captura de elementos por bloque PDF 
             </h1>
             <p>Ingresa un bloque de elementos, máximo 30, haciendo una comparación con un PDF del mismo máximo de hojas.</p>
         </section>
