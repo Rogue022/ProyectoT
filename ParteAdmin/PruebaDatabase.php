@@ -5,4 +5,5 @@ if (!$conn) {
     echo "Conexión fallida :(";
 }else{
     echo "Conexión exitosa! <3";
+    exit;
 }
