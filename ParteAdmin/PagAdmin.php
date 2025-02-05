@@ -70,12 +70,7 @@
         <!--Captura de datos mediante formulario: se ingresa un PDF -->
         <section class="ContSecc2">
             <h1>SeccionPDF</h1>
-            <!-- Método: almacenamiento en BD, inicia más arriba -->
             
-
-            <!--Médoto: Drive (pero puede ser otro servicio):  -->
-            <!-- <iframe src="https://docs.google.com/file/d/1jIIsd4SlYtbazMSdpHz_CIf83RdXx59D/preview" width="700" height="600"></iframe>
-            -->
         </section>
     </div>
     </main>
