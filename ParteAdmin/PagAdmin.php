@@ -17,7 +17,6 @@
             <p>Ingresa un bloque de elementos, máximo 30, haciendo una comparación con un PDF del mismo máximo de hojas.</p>
         </section>
         <!-- Formulario para subir a la BD -->
-        
         <form action="SubirArchivo.php" method="post" enctype="multipart/form-data">
             <label for="PDF">PDF:</label>
             <input type="file" name="archivoPDF" id="PDF" accept="application/pdf" required />
