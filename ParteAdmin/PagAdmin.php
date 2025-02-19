@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Exámenes propedéuticos</title>
-    <link rel="preload" href="CSS/normalize.css" as="style">
-    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="preload" href="../CSSInicio/normalize.css" as="style">
+    <link rel="stylesheet" href="../CSSInicio/normalize.css">
     <link href="CSSAdm/CSSAdm.css" rel="stylesheet"> 
 </head>
 <body>

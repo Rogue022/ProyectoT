@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
 
     if (move_uploaded_file($file_tmp, $target_file)) {
         echo "El archivo se ha subido correctamente.<br>";
-
+    
         try {
             // Insertar en la base de datos usando PDO
             $stmt = $pdo->prepare("
@@ -77,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
                 (NombreDocumento, FechaCreacion, UltimaModificacion, RutaArchivo, NumPags, Borrado) 
                 VALUES (?, NOW(), NOW(), ?, ?, 0)
             ");
-            $smt->bind_param("sss",$file_name, $target_file, $numeroPags);
-            $smt->execute();
-            $stmt->execute([$file_name, $target_file]);
-
+    
+            // Ejecutar con los valores correctos
+            $stmt->execute([$file_name, $target_file, $numeroPags]);
+    
             // Obtener el último ID insertado
             $ultimo_id = $pdo->lastInsertId();
             echo "Subida exitosa a la base de datos. ID insertado: " . $ultimo_id;
@@ -90,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
     } else {
         echo "Hubo un error al subir el archivo.";
     }
+    
 }
 
 
