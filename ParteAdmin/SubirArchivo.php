@@ -1,53 +1,26 @@
 <?php
-// Mostrar errores solo en desarrollo
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+header('Content-Type: text/html; charset=UTF-8');
 
-// Cargar configuración desde el archivo .env
-$dotenv = parse_ini_file('.env');
+// Incluir autoload de Composer
+require '../vendor/autoload.php'; // Cargar las dependencias de Composer
+use setasign\Fpdi\Fpdi; // Uso de namespaces
 
-//para contar las páginas de un PDF
-require '../vendor/autoload.php'; //Cargar las dependencias de Composer
-use setasign\Fpdi\Fpdi; //Uso de los namespaces
-
-
-//Nueva conexión a la base de datos a través de PDO por razones de seguridad
-try {
-    $pdo = new PDO( 
-        "mysql:host={$dotenv['DB_HOST']};dbname={$dotenv['DB_NAME']}",
-        $dotenv['DB_USER'],
-        $dotenv['DB_PASS'],
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-} catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
-}
-
-//función para contar páginas
-function contarPaginasPDF($archivoPDF){
-    $pdf = new Fpdi();
-    $contarPags = $pdf->setSourceFile($archivoPDF); //contar las páginas
-    return $contarPags; //devuelve numero de páginas
-}
-
-//Subir archivos PDF
-//Se verifica que el servidor esté disponible y el archivo coincida con un archivo pdf
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) { 
-    $target_dir = __DIR__ . "/Uploads/"; //En esta carpeta se van a subir los PDF (git ignorará los archivos nuevos)
+// Verificar si el archivo se sube correctamente
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
+    $target_dir = __DIR__ . "/Uploads/";
 
     // Verificar que la carpeta exista o crearla
     if (!is_dir($target_dir)) {
-        mkdir($target_dir, 0755, true); //Si no existe, la va a crear. 
+        mkdir($target_dir, 0755, true);
     }
 
-    $file_tmp = $_FILES["archivoPDF"]["tmp_name"]; //crea un nombretemporal en que se sube temporalmente en el servidor de PHP haciendo alusión a HTML = 'archivoPDF'
-    $file_name = basename($_FILES["archivoPDF"]["name"]); //obtiene el nombre original con el que fue subido el archivo
-    $file_type = mime_content_type($file_tmp); // Verificar el tipo MIME. Una capa extra de seguridad
-    $max_size = 5 * 1024 * 1024; // 5 MB de tamaño máximo
+    $file_tmp = $_FILES["archivoPDF"]["tmp_name"];
+    $file_name = basename($_FILES["archivoPDF"]["name"]);
+    $file_type = mime_content_type($file_tmp);
+    $max_size = 5 * 1024 * 1024; // 5 MB
 
     // Validaciones de seguridad
-    if ($file_type !== "application/pdf") { //validación MIME
+    if ($file_type !== "application/pdf") {
         die("Solo se permiten archivos PDF.");
     }
 
@@ -55,10 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
         die("El archivo excede el tamaño máximo permitido (5 MB).");
     }
 
-    //contar las páginas PDF
+    // Función para contar las páginas de un PDF
+    function contarPaginasPDF($archivoPDF)
+    {
+        $pdf = new Fpdi();
+        return $pdf->setSourceFile($archivoPDF); // Retorna el número de páginas
+    }
+
+    // Contar las páginas del archivo PDF
     $numeroPags = contarPaginasPDF($file_tmp);
 
-    if ($numeroPags > 30){
+    if ($numeroPags > 30) {
         echo "El archivo contiene más de 30 páginas. ";
         exit;
     }
@@ -69,46 +49,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
 
     if (move_uploaded_file($file_tmp, $target_file)) {
         echo "El archivo se ha subido correctamente.<br>";
-    
-        try {
-            // Insertar en la base de datos usando PDO
-            $stmt = $pdo->prepare("
-                INSERT INTO controlDocumentos 
-                (NombreDocumento, FechaCreacion, UltimaModificacion, RutaArchivo, NumPags, Borrado) 
-                VALUES (?, NOW(), NOW(), ?, ?, 0)
-            ");
-    
-            // Ejecutar con los valores correctos
-            $stmt->execute([$file_name, $target_file, $numeroPags]);
-    
-            // Obtener el último ID insertado
-            $ultimo_id = $pdo->lastInsertId();
+
+        // Incluir la clase DataManager para insertar en la base de datos
+        include 'Clases/class.DataManager.php';
+
+        // Llamar al método de la clase DataManager para insertar el registro
+        $ultimo_id = DataManager::insertDocument($file_name, $target_file, $numeroPags);
+
+        if ($ultimo_id) {
             echo "Subida exitosa a la base de datos. ID insertado: " . $ultimo_id;
-        } catch (PDOException $e) {
-            echo "Error al insertar en la base de datos: " . $e->getMessage();
         }
     } else {
         echo "Hubo un error al subir el archivo.";
     }
-    
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subida de archivo</title>
-    <link rel="preload" href="CSS/normalize.css" as="style">
     <link rel="stylesheet" href="CSS/normalize.css">
-    <link href="CSSAdm/CSSAdm.css" rel="stylesheet"> 
+    <link href="CSSAdm/CSSAdm.css" rel="stylesheet">
 </head>
+
 <body>
-    <a href='../index.php' class="Pill--selected"> Regresar </a>
+    <a href='PagAdmin.php' class="Pill--selected"> Regresar </a>
 </body>
+
 </html>
