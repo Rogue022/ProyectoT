@@ -4,7 +4,7 @@
 }
 
 .ContSecc2{
-    background: #f5cfcf;
+    background: #000000;
 }
 
 .Pill--selected{
@@ -14,6 +14,6 @@
     border-radius: 1em;
     border: none;
     outline: none;
-    background: #009578;
+    background: #e7eceb;
     color: #ffffff;
 }

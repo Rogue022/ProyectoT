@@ -9,7 +9,6 @@ use setasign\Fpdi\Fpdi; // Uso de namespaces
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
     $target_dir = __DIR__ . "/Uploads/";
 
-    // Verificar que la carpeta exista o crearla
     if (!is_dir($target_dir)) {
         mkdir($target_dir, 0755, true);
     }
@@ -19,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
     $file_type = mime_content_type($file_tmp);
     $max_size = 5 * 1024 * 1024; // 5 MB
 
-    // Validaciones de seguridad
     if ($file_type !== "application/pdf") {
         die("Solo se permiten archivos PDF.");
     }
@@ -28,56 +26,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) {
         die("El archivo excede el tamaño máximo permitido (5 MB).");
     }
 
-    // Función para contar las páginas de un PDF
-    function contarPaginasPDF($archivoPDF)
-    {
-        $pdf = new Fpdi();
-        return $pdf->setSourceFile($archivoPDF); // Retorna el número de páginas
-    }
-
-    // Contar las páginas del archivo PDF
-    $numeroPags = contarPaginasPDF($file_tmp);
-
-    if ($numeroPags > 30) {
-        echo "El archivo contiene más de 30 páginas. ";
-        exit;
-    }
-
-    // Renombrar el archivo para evitar sobrescritura
     $new_file_name = uniqid("doc_", true) . ".pdf";
     $target_file = $target_dir . $new_file_name;
 
+    // Primero movemos el archivo
     if (move_uploaded_file($file_tmp, $target_file)) {
-        echo "El archivo se ha subido correctamente.<br>";
+        
+        // Ahora que está en su destino, usamos FPDI para contar páginas
+        function contarPaginasPDF($archivoPDF)
+        {
+            $pdf = new Fpdi();
+            return $pdf->setSourceFile($archivoPDF);
+        }
 
-        // Incluir la clase DataManager para insertar en la base de datos
+        $numeroPags = contarPaginasPDF($target_file);
+
+        if ($numeroPags > 30) {
+            unlink($target_file); // Borra el archivo si no cumple la regla
+            die("El archivo contiene más de 30 páginas.");
+        }
+
+        // Incluir clase y guardar en base de datos
         include 'Clases/class.DataManager.php';
-
-        // Llamar al método de la clase DataManager para insertar el registro
         $ultimo_id = DataManager::insertDocument($file_name, $target_file, $numeroPags);
 
         if ($ultimo_id) {
-            echo "Subida exitosa a la base de datos. ID insertado: " . $ultimo_id;
+            echo "Archivo subido y registrado exitosamente. ID: $ultimo_id";
+        } else {
+            echo "Archivo subido, pero no se pudo insertar en la base de datos.";
         }
+
     } else {
-        echo "Hubo un error al subir el archivo.";
+        echo "Error al mover el archivo.<br>";
+        echo "Temp file: $file_tmp<br>";
+        echo "Target file: $target_file<br>";
+        echo "¿Existe el archivo temporal?: " . (file_exists($file_tmp) ? 'Sí' : 'No') . "<br>";
+        echo "¿Existe el directorio destino?: " . (is_dir($target_dir) ? 'Sí' : 'No') . "<br>";
+        echo "Permisos del destino: " . substr(sprintf('%o', fileperms($target_dir)), -4);
     }
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subida de archivo</title>
-    <link rel="stylesheet" href="CSS/normalize.css">
-    <link href="CSSAdm/CSSAdm.css" rel="stylesheet">
-</head>
-
-<body>
-    <a href='PagAdmin.php' class="Pill--selected"> Regresar </a>
-</body>
-
-</html>
