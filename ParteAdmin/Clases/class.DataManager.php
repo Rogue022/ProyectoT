@@ -44,36 +44,7 @@
                 echo "Error al insertar en la base de datos: " . $e->getMessage();
                 return false;
             }
-        }
-
-        public static function registraExamen($valorExamen, $fechaExamen, $semestre, $carrera, $escuela, $reactivos, $calificacion) {
-            try {
-                $pdo = self::_getConnection();
-        
-                $consulta = $pdo->prepare(
-                    "INSERT INTO parametrosExamen 
-                    (nomExamen, FechaExamen, Semestre, Carrera, EscuelaProcedencia, ReactivosCorrectos, Calificacion)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)"
-                );
-        
-                $reactivosStr = implode(',', $reactivos); // Guardar como string
-                $consulta->execute([
-                    $valorExamen,
-                    $fechaExamen,
-                    $semestre,
-                    $carrera,
-                    $escuela,
-                    $reactivosStr,
-                    $calificacion
-                ]);
-        
-                return true;
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                return false;
-            }
-        }
-        
+        }  
         
         
     }

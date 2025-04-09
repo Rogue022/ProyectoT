@@ -40,6 +40,7 @@
                 <br>
 
                 <form method="POST" action="procesaFormulario.php" >
+                    
                     <label for="Examen" class="Pill">Examen: </label>
                     <br><input type="radio" name="Examen" id="Examen" value="1" required /> Inicio
                     <br><input type="radio" name="Examen" id="Examen" value="2" required /> Final
@@ -47,13 +48,12 @@
                     <label for="FechaExamen">Fecha del Examen:</label>
                     <input type="date" name="FechaExamen" required>
                     <br>
-                    <label for="Semestre">Semestre:</label>
-                    <input type="text" name="Semestre" required>
-                    <br>
+                    
                     <input type="submit" value="Registrar Examen">
                 
                     <br>
-
+                    <br>
+                    <br>
                     <label for="Carrera">Carrera: </label>
                     <br><input type="radio" name="Carrera" id="Carrera" value="1" required /> I.C.
                     <br><input type="radio" name="Carrera" id="Carrera" value="2" required /> I.C.E.
