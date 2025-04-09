@@ -7,7 +7,8 @@
     <title>Admin Exámenes propedéuticos</title>
     <link rel="preload" href="../CSSInicio/normalize.css" as="style">
     <link rel="stylesheet" href="../CSSInicio/normalize.css">
-    <link href="CSSAdm/CSSAdm.css" rel="stylesheet">
+    <link href="CSSAdm/CSSAdm.css" rel="stylesheet" >
+
 
 </head>
 
@@ -17,9 +18,8 @@
             <h1>
                 Captura de elementos mediante formulario
             </h1>
-            <p>Comparación PDF</p>
+            <p>Ingresa un PDF </p>
         </section>
-
         
         <!-- Formulario para subir a la BD -->
         <form id='formularioSubida' method="post" enctype="multipart/form-data">
@@ -27,9 +27,11 @@
             <input type="file" name="archivoPDF" id="PDF" accept="application/pdf" required />
             <button type="submit">Subir</button>
         </form>
-
-
     </header>
+
+    <!-- Muestra resultado de subida  -->
+    <div id="mensajeResultado"></div>
+
     <main>
         <!--Captura de datos mediante formulario -->
         <div class="ContenedorSeccion">
@@ -37,11 +39,19 @@
 
                 <br>
 
-                <form >
+                <form method="POST" action="procesaFormulario.php" >
                     <label for="Examen" class="Pill">Examen: </label>
                     <br><input type="radio" name="Examen" id="Examen" value="1" required /> Inicio
                     <br><input type="radio" name="Examen" id="Examen" value="2" required /> Final
                     <br>
+                    <label for="FechaExamen">Fecha del Examen:</label>
+                    <input type="date" name="FechaExamen" required>
+                    <br>
+                    <label for="Semestre">Semestre:</label>
+                    <input type="text" name="Semestre" required>
+                    <br>
+                    <input type="submit" value="Registrar Examen">
+                
                     <br>
 
                     <label for="Carrera">Carrera: </label>
@@ -74,9 +84,8 @@
             </section>
             <!--Captura de datos mediante formulario: se ingresa un PDF -->
             <section class="ContSecc2">
-                <div id="mensajeResultado"></div>
-                <h1>SeccionPDF</h1>
-
+                
+                <h1>Sección PDF</h1>
             </section>
         </div>
     </main>
@@ -85,10 +94,11 @@
             <a href='../index.php' class="Pill--selected"> Regresar </a>
     </footer>
 
+    
     <script>
         document.getElementById('formularioSubida').addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita que se recargue la página
-
+            e.preventDefault(); 
+            
             const form = e.target;
             const formData = new FormData(form);
 

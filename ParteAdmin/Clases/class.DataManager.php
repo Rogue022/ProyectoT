@@ -1,14 +1,14 @@
 <?php 
+    // esta clase se va a encargar de hacer las conexiones y recuperar la información de la base de datos
+    //o sea, esto es puro gets!!!!
 
     class DataManager{
-
-        private static $pdo = null;
-
+        private static $pdo = null; //nombre común a una instancia de PHP que es estática para que no se vuelva a crear cuando se vuelva a llamar
         private static function _getConnection(){
             
-            if (self::$pdo === NULL)
+            if (self::$pdo === NULL) //si no está instanciada, se crea la conexión a la BD
             {
-                $dotenv = parse_ini_file('.env');
+                $dotenv = parse_ini_file('.env'); //elementos ocultos por seguridad
                 try
                 {
                     self::$pdo = new PDO( 
@@ -19,31 +19,63 @@
                         
                     );
                     
-                } catch (PDOException $e) {
-                    die("Error de conexión: " . $e->getMessage());
+                } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
+                    die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
                 }
             }
-            return self::$pdo;
+            return self::$pdo; //si ya está abierta la sesión, devuelve el resultado. 
         }
 
-        public static function insertDocument($fileName, $filePath, $numPages){
+        public static function insertarDocumento($nombreArchivo, $direccionArchivo, $numeroPaginas){
             try {
-                $pdo = self::_getConnection();
+                $pdo = self::_getConnection(); //vemos si está conectada la base de datos
 
-                $stmt = $pdo->prepare(
+                $consulta = $pdo->prepare( //preparamos la consulta con los placeholders
                     "INSERT INTO controlDocumentos
                     (NombreDocumento, FechaCreacion, UltimaModificacion, RutaArchivo, NumPags, Borrado)
-                    VALUES (?, NOW(), NOW(), ?, ?, 0)"
+                    VALUES (?, NOW(), NOW(), ?, ?, 0)" 
                 );
 
-                $stmt->execute([$fileName, $filePath, $numPages]);
+                $consulta->execute([$nombreArchivo, $direccionArchivo, $numeroPaginas]); //placeholders se llenan
 
-                return $pdo->lastInsertId(); // Retorna el último ID insertado
+                return $pdo->lastInsertId(); // Retorna el último ID insertado para comprobar el ingreso
                 
-            } catch (PDOException $e) {
+            } catch (PDOException $e) { //manejo de excepciones para ingresarlo en la base de datos
                 echo "Error al insertar en la base de datos: " . $e->getMessage();
                 return false;
             }
         }
+
+        public static function registraExamen($valorExamen, $fechaExamen, $semestre, $carrera, $escuela, $reactivos, $calificacion) {
+            try {
+                $pdo = self::_getConnection();
+        
+                $consulta = $pdo->prepare(
+                    "INSERT INTO parametrosExamen 
+                    (nomExamen, FechaExamen, Semestre, Carrera, EscuelaProcedencia, ReactivosCorrectos, Calificacion)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)"
+                );
+        
+                $reactivosStr = implode(',', $reactivos); // Guardar como string
+                $consulta->execute([
+                    $valorExamen,
+                    $fechaExamen,
+                    $semestre,
+                    $carrera,
+                    $escuela,
+                    $reactivosStr,
+                    $calificacion
+                ]);
+        
+                return true;
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
+        }
+        
+        
+        
     }
+
 ?>

@@ -1,10 +1,16 @@
+body{
+    font-size: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
 .ContenedorSeccion{
     display: flex;
     gap: 3rem;
 }
 
 .ContSecc2{
-    background: #000000;
+    background:rgba(240, 237, 237, 0.466);
 }
 
 .Pill--selected{
@@ -14,6 +20,6 @@
     border-radius: 1em;
     border: none;
     outline: none;
-    background: #e7eceb;
+    background: #862a2a;
     color: #ffffff;
 }
