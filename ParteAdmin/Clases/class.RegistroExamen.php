@@ -1,33 +1,19 @@
-<?php 
-    require_once('class.PropiedadesObjeto.php');
-    
-    //clase hija de propiedades objeto
-    
-    class RegistroExamen extends PropiedadesObjeto {
-        protected $propertyTable = [
-            'tipoExamen' => 'tipo_examen',
-            'fechaExamen' => 'fecha_examen'
+<?php
+require_once('class.PropiedadesObjeto.php');
+
+class RegistroExamen extends PropiedadesObjeto {
+    public function __construct($arData = []) {
+        $this->tablaPropiedades = [
+            'tipoExamen'   => 'nomExamen',
+            'fechaExamen'  => 'FechaExamen'
         ];
-    
-        //constructor
-        public function __construct($tipoExamen, $fechaExamen)
-        {
-            parent::__construct([
-                'tipoExamen' => $tipoExamen,
-                'fechaExamen' => $fechaExamen
-            ]);
-        }
-        
-        //validación
-        public function validar():bool {
-            if(empty($this->data['tipoExamen']) || empty($this->data['fechaExamen'])){
-                $this->errores[] = 'El tipo de examen y la fecha son requeridos... ';
-            }
-            return true;
-        }
-        
+        parent::__construct($arData);
+    }
+
+    public function validar(): bool {
+        // Accede al valor real en $this->datos utilizando el nombre en tablaPropiedades
+        return !empty($this->datos[$this->tablaPropiedades['tipoExamen']]) && 
+               !empty($this->datos[$this->tablaPropiedades['fechaExamen']]);
     }
     
-
-
-?>
+}

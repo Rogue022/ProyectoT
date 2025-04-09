@@ -22,7 +22,7 @@
         </section>
         
         <!-- Formulario para subir a la BD -->
-        <form id='formularioSubida' method="post" enctype="multipart/form-data">
+        <form id='formularioSubida' method="POST" enctype="multipart/form-data">
             <label for="PDF">PDF:</label>
             <input type="file" name="archivoPDF" id="PDF" accept="application/pdf" required />
             <button type="submit">Subir</button>
@@ -36,11 +36,8 @@
         <!--Captura de datos mediante formulario -->
         <div class="ContenedorSeccion">
             <section>
-
                 <br>
-
-                <form method="POST" action="procesaFormulario.php" >
-                    
+                <form id ='formularioExamen' method="POST" >
                     <label for="Examen" class="Pill">Examen: </label>
                     <br><input type="radio" name="Examen" id="Examen" value="1" required /> Inicio
                     <br><input type="radio" name="Examen" id="Examen" value="2" required /> Final
@@ -48,7 +45,6 @@
                     <label for="FechaExamen">Fecha del Examen:</label>
                     <input type="date" name="FechaExamen" required>
                     <br>
-                    
                     <input type="submit" value="Registrar Examen">
                 
                     <br>
@@ -62,18 +58,18 @@
                     <br>
                     <br>
                     <label>Escuela de procedencia: </label>
-                    <input type="Text" required>
+                    <input type="Text" name="Escuela" required>
                     <br>
                     <br>
                     <p>Reactivos correctos: </p>
                     <label for="P1">Pregunta 1 </label>
-                    <input type="checkbox" name="Reactivos" id="P1">
+                    <input type="checkbox" name="Reactivos[]" id="P1">
                     <br><label for="P2">Pregunta 2 </label>
-                    <input type="checkbox" name="Reactivos" id="P2">
+                    <input type="checkbox" name="Reactivos[]" id="P2">
                     <br><label for="P3">Pregunta 3 </label>
-                    <input type="checkbox" name="Reactivos" id="P3">
+                    <input type="checkbox" name="Reactivos[]" id="P3">
                     <br><label for="P4">Pregunta 4 </label>
-                    <input type="checkbox" name="Reactivos" id="P4">
+                    <input type="checkbox" name="Reactivos[]" id="P4">
                     <br>
                     <br>
                     <label for="calificacion">Calificación </label>
@@ -114,6 +110,27 @@
                 .catch(error => {
                     console.error('Error:', error);
                     document.getElementById('mensajeResultado').innerHTML = 'Hubo un error al subir el archivo.';
+                });
+        });
+
+        document.getElementById('formularioExamen').addEventListener('submit', function(e) {
+            e.preventDefault(); //previene la carga de la página
+            
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch('Clases/class.ProcesaFormulario.php', { 
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('mensajeResultado').innerHTML = data;
+                    form.reset(); // Limpia el formulario si quieres
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('mensajeResultado').innerHTML = 'Error al guardar la información';
                 });
         });
     </script>

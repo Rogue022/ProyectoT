@@ -44,8 +44,24 @@
                 echo "Error al insertar en la base de datos: " . $e->getMessage();
                 return false;
             }
-        }  
-        
+        } 
+
+        public static function guardaExamen(RegistroExamen $examen) {
+            try {
+                // Conexión a la base de datos
+                $pdo = self::_getConnection();
+
+
+                // Insertar el examen en la base de datos
+                $sql = "INSERT INTO parametrosexamen(idExamen, nomExamen, FechaExamen, Semestre) VALUES (1, ?, ?, 1)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$examen->tipoExamen, $examen->fechaExamen]);
+                return true;
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
+        }
         
     }
 
