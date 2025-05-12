@@ -8,26 +8,26 @@
     <link rel="preload" href="../CSSInicio/normalize.css" as="style">
     <link rel="stylesheet" href="../CSSInicio/normalize.css">
     <link href="CSSAdm/CSSAdm.css" rel="stylesheet" >
-
-
 </head>
 
 <body>
     <header>
-        <section>
+        <section class="ContenedorSubida">
             <h1>
-                Captura de elementos mediante formulario
+                Captura de elementos
             </h1>
-            <p>Ingresa un PDF </p>
+            
         </section>
-        
+    </header>
+
+    <div>
         <!-- Formulario para subir a la BD -->
-        <form id='formularioSubida' method="POST" enctype="multipart/form-data">
+        <form class="ContenedorSubida" id='formularioSubida' method="POST" enctype="multipart/form-data">
             <label for="PDF">PDF:</label>
             <input type="file" name="archivoPDF" id="PDF" accept="application/pdf" required />
             <button type="submit">Subir</button>
         </form>
-    </header>
+    </div>
 
     <!-- Muestra resultado de subida  -->
     <div id="mensajeResultado"></div>
@@ -44,11 +44,6 @@
                     <br>
                     <label for="FechaExamen">Fecha del Examen:</label>
                     <input type="date" name="FechaExamen" required>
-                    <br>
-                    <input type="submit" value="Registrar Examen">
-                
-                    <br>
-                    <br>
                     <br>
                     <label for="Carrera">Carrera: </label>
                     <br><input type="radio" name="Carrera" id="Carrera" value="1" required /> I.C.
@@ -75,7 +70,7 @@
                     <label for="calificacion">Calificación </label>
                     <br><input type="number" name="Calificacion" id="calificacion" value="0" min="0" max="10" required>
                     <br><br>
-                    <input type="submit" value="Ingresar datos" />
+                    <input type="submit" value="Registrar Examen">
                 </form>
             </section>
             <!--Captura de datos mediante formulario: se ingresa un PDF -->

@@ -39,7 +39,7 @@
                 $consulta->execute([$nombreArchivo, $direccionArchivo, $numeroPaginas]); //placeholders se llenan
 
                 return $pdo->lastInsertId(); // Retorna el último ID insertado para comprobar el ingreso
-                
+
             } catch (PDOException $e) { //manejo de excepciones para ingresarlo en la base de datos
                 echo "Error al insertar en la base de datos: " . $e->getMessage();
                 return false;
@@ -53,7 +53,7 @@
 
 
                 // Insertar el examen en la base de datos
-                $sql = "INSERT INTO parametrosexamen(idExamen, nomExamen, FechaExamen, Semestre) VALUES (1, ?, ?, 1)";
+                $sql = "INSERT INTO parametrosexamen(nomExamen, FechaExamen, Semestre) VALUES (?, ?, 1)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([$examen->tipoExamen, $examen->fechaExamen]);
                 return true;
