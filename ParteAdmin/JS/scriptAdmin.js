@@ -4,7 +4,6 @@ sidebarToggle.addEventListener("click", function () {
 });
 
 
-//no funciona:
 document.querySelector(".theme-toggle").addEventListener("click", () => {
     toggleLocalStorage();
     toggleRootClass();
