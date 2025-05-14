@@ -37,6 +37,9 @@
                         </a>
                     </li>
 
+
+
+                    <!-- Solo accesible para el administrador -->
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
                             aria-expanded="false">
@@ -47,14 +50,15 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Capturar mediante formulario</a>
+                                <a href="/ParteAdmin/PagAdmin.php" class="sidebar-link">Capturar mediante formulario</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Capturar mediante OCR</a>
                             </li>
                         </ul>
                     </li>
-
+                    <!-- Fin Solo accesible para el administrador -->
+                
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
                             aria-expanded="false">
@@ -68,12 +72,15 @@
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Estudiante</a>
                             </li>
+                            <!-- Solo accesible para el administrador -->
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Profesor</a>
                             </li>
+                            <!-- Fin Solo accesible para el administrador -->
                         </ul>
                     </li>
 
+                    <!-- Solo accesible para el administrador -->
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-target="#usuarios" data-bs-toggle="collapse"
                             aria-expanded="false">
@@ -91,6 +98,7 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- Fin Solo accesible para el administrador -->
                 </ul>
             </div>
         </aside>
@@ -100,6 +108,8 @@
                 <button class="btn" id="sidebar-toggle" type="button">
                     <span class="navbar-toggler-icon"> </span>
                 </button>
+
+                <!-- Cerrar sesión -->
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -115,4 +125,6 @@
                 </div>
             </nav>
 
+
+        
             <!-- ========== End Section ========== -->

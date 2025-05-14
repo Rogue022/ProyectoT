@@ -1,3 +1,8 @@
+<!-- Cosas por hacer:
+    1. Proteger el acceso a ciertas páginas (como ingresar información)
+    
+-->
+
 <?php
 //establecer la fecha en la zona de cdmx
 date_default_timezone_set('America/Mexico_City');
@@ -25,7 +30,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
 
                             <div class="col-12">
                                 <div class="p-3 m-1">
-                                    <h1>Administrador</h1>
+                                    <h1>Profesor</h1>
                                     <p>Seleccione una tarea del menú de la izquierda</p>
 
                                 </div>
