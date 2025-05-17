@@ -50,7 +50,7 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/PagAdmin.php" class="sidebar-link">Capturar mediante formulario</a>
+                                <a href="/ParteAdmin/indexAdmin.php" class="sidebar-link">Capturar mediante formulario</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Capturar mediante OCR</a>
