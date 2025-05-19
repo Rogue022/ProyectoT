@@ -50,7 +50,7 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/indexAdmin.php" class="sidebar-link">Capturar mediante formulario</a>
+                                <a href="/ParteAdmin/pantallaCaptura.php" class="sidebar-link">Capturar mediante formulario</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Capturar mediante OCR</a>
@@ -118,7 +118,7 @@
                             </a>
                             <!-- Menú del avatar -->
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Salir</a>
+                                <a href="../Templates/cierre.php" class="dropdown-item">Salir</a>
                             </div>
                         </li>
                     </ul>

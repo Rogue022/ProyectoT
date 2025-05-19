@@ -16,7 +16,7 @@
                                     class="form-check-input"
                                     type="radio"
                                     name="tipo_examen"
-                                    value="Inicio"
+                                    value="inicio"
                                     id="tipo_examen" />
                                 <label class="form-check-label" for="tipo_examen" required> Inicio </label>
                             </div>
@@ -24,7 +24,7 @@
                                 <input
                                     class="form-check-input"
                                     type="radio"
-                                    value="Final"
+                                    value="final"
                                     name="tipo_examen"
                                     id="tipo_examen" />
                                 <label class="form-check-label" for="tipo_examen"> Final </label>
@@ -165,7 +165,7 @@
         </section>
     </div>
 
-    <div class="col" id="mostrar">Aquí es PDF
+    <div class="col" id="columnaIzquierda">Aquí es PDF
     </div>
 </div>
 
@@ -176,7 +176,7 @@
 
         const datosForm = new FormData(this);
 
-        fetch('procesaFormulario.php', {
+        fetch('recibeDatos.php', {
                 method: 'POST',
                 body: datosForm
             })
@@ -184,7 +184,7 @@
                 return respuesta.text();
             })
             .then(contenido => {
-                document.getElementById("mostrar").innerHTML = contenido;
+                document.getElementById("columnaIzquierda").innerHTML = contenido;
             })
             .catch(error => {
                 console.error('Error al enviar los datos', error);

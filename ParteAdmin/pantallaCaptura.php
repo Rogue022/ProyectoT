@@ -1,5 +1,5 @@
 <!-- Index admin -->
-<?php include("../Templates/cabeceraLateral.php"); ?>
+<?php include("../Templates/cabeceraLateral.php");?>
 
 <div class="container">
     <div class="row justify-content-center align-items-center g-2">

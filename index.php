@@ -37,8 +37,8 @@
                                     </svg>
                                 </div>
                                 <form action="ParteAdmin/adminIndex.php" method="POST">
-                                    <input type="text" name="" id="" class="form-control my-4 py-2" placeholder="Usuario" />
-                                    <input type="text" name="" id="" class="form-control my-4 py-2" placeholder="Contraseña" />
+                                    <input type="text" name="usuario" id="usuario" class="form-control my-4 py-2" placeholder="Usuario" />
+                                    <input type="text" name="password" id="password" class="form-control my-4 py-2" placeholder="Contraseña" />
                                     <div class="text-center">
                                         <button class="btn btn-primary">
                                             Iniciar sesión
