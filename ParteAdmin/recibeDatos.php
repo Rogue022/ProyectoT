@@ -2,6 +2,8 @@
 
 include 'Clases/class.ExamenValidador.php';
 include 'Clases/class.Examen.php';
+include 'Clases/class.DataManager.php';
+
 
 $validador = new ValidarExamen();
 
@@ -16,6 +18,8 @@ if ($validador->validarTodo($_POST)) {
     $examen = new Examen($datos);
     $examen->evaluar();
     $examen->mostrarResultados();
+
+
 } else {
     $errores = $validador->obtenerErrores();
     foreach ($errores as $campo => $mensaje) {

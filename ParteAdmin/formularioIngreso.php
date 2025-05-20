@@ -151,7 +151,8 @@
                                     class="form-control"
                                     name="calificacion"
                                     id="calificacion"
-                                    value="<?php echo $total; ?>" min="0" max="10" required />
+                                    default = "0"
+                                    value="0" min="0" max="10" required />
                             </div>
                             <button
                                 type="submit"

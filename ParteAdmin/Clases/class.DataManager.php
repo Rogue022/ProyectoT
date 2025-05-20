@@ -6,8 +6,8 @@ class DataManager
 {
     private static $conexionDB = null; //nombre común a una instancia de PHP que es estática para que no se vuelva a crear cuando se vuelva a llamar
 
-    private static function _getConexion()
-    {
+    private static function iniciaConexion () : PDO
+     {
         if (self::$conexionDB === NULL) //si no está instanciada, se crea la conexión a la BD
         {
             $dotenv = parse_ini_file('.env'); //elementos ocultos por seguridad
@@ -27,11 +27,14 @@ class DataManager
         return self::$conexionDB; //si ya está abierta la sesión, devuelve el resultado. 
     }
 
+    public static function _getConexion():PDO{
+        return self::$conexionDB;
+    }
 
     public static function muestraConexion()
     {
         try {
-            $nuevaConexion = self::_getConexion();
+            $nuevaConexion = self::iniciaConexion();
 
             if ($nuevaConexion instanceof PDO) {
                 echo "Conectada";

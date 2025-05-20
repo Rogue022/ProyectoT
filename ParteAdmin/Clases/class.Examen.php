@@ -57,4 +57,8 @@ class Examen
     public function _getCorrectas(){
         return $this->correctas;
     }
+
+    public function _getElementos(){
+        
+    }
 }
