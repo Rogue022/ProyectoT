@@ -4,25 +4,12 @@ include 'Clases/class.ExamenValidador.php';
 include 'Clases/class.Examen.php';
 include 'Clases/class.DataManager.php';
 
+//1. Primero, debe de armar el examen esta cosa pasando los datos
+//del POST
+$examen = new ValidadorExamen($_POST);
 
-$validador = new ValidarExamen();
+//primero set datos en validador
 
-if ($validador->validarTodo($_POST)) {
-    $validador->normalizar($_POST);
+$examen->validarTodo($_POST);
 
-    $datos = array_merge(
-        $validador->getDatosNormalizados(),
-        $_POST // incluye preguntas
-    );
-
-    $examen = new Examen($datos);
-    $examen->evaluar();
-    $examen->mostrarResultados();
-
-
-} else {
-    $errores = $validador->obtenerErrores();
-    foreach ($errores as $campo => $mensaje) {
-        echo "<p>Error en <strong>$campo</strong>: $mensaje</p>";
-    }
-}
+print_r($examen->getDatos());

@@ -45,4 +45,10 @@ class DataManager
             echo "Error: " . $e->getMessage();
         }
     }
+
+    //altas y bajas
+
+    
+
+    //actualizaciones? 
 }
