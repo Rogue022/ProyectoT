@@ -1,3 +1,13 @@
+<?php 
+include ("../Control_Login/class.Sesion.php");
+
+$sesion = new Sesion;
+
+//$sesion->empiezaSesion();
+
+?>
+
+
 <!-- Inspirado de: https://github.com/codzsword/bootstrap-admin-dashboard -->
 
 <!DOCTYPE html>

@@ -4,7 +4,7 @@ include_once ('ParteAdmin/Clases/class.DataManager.php');
 $login = new Login();
 
 
-$login->iniciarSesion();
+$login->preparaLogin();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,7 +46,7 @@ $login->iniciarSesion();
                                 </div>
 
                                 <!-- Aquí se van a hacer las validaciones de envíos del usuario -->
-                                 <!--Antes: <form action="ParteAdmin/adminIndex.php" method="POST"> -->
+                                <!--Antes: <form action="ParteAdmin/adminIndex.php" method="POST"> -->
                                 <form action=" " method="POST">
 
                                 <?php if($login->_getUsuarioValido() === FALSE) { ?>

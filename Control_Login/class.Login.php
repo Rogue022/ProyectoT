@@ -1,6 +1,7 @@
 <?php
 
-include_once('ParteAdmin/Clases/class.DataManager.php');
+include_once(__DIR__ . '/../ParteAdmin/Clases/class.DataManager.php');
+
 
 class Login
 {
@@ -85,23 +86,11 @@ class Login
         $this->conexionBD = DataManager::_getConexion();
     }
 
-
-    //se manda a llamar la instancia de la base de datos
-
-    //se hace un select de los usuarios
-
-    //se comprueba por el POST del login
-
-    //se comprueba la sesión de los usuarios
-
-    //ConectadaArray ( [usuario] => admin [password] => sys )
-    public function iniciarSesion()
+    public function preparaLogin()
     {
         $this->hacerConexion();
 
-        $sql = "SELECT * FROM Usuarios";
-        $listaUsuarios = $this->conexionBD->query($sql);
-        $usuarios = $listaUsuarios->fetchAll();
+        $usuarios = DataManager::_getUsuarios();
 
         if ($_POST) {
 

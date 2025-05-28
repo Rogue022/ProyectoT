@@ -18,7 +18,7 @@ class DataManager
                     $dotenv['DB_USER'],
                     $dotenv['DB_PASS'],
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-                    
+
                 );
                 echo "Conectada";
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
@@ -83,9 +83,17 @@ class DataManager
     }
 
 
-    public static function insertarDocumento(){
-        
-    }
+    public static function insertarDocumento() {}
 
-    //actualizaciones? F
+    public static function _getUsuarios()
+    {
+        self::iniciaConexion();
+        try {
+            $sql = "SELECT * FROM Usuarios";
+            $listaUsuarios = self::$conexionDB->query($sql);
+            return $listaUsuarios;
+        } catch (PDOException $E) {
+            echo $E;
+        }
+    }
 }
