@@ -81,5 +81,10 @@ class DataManager
         }
     }
 
+
+    public static function insertarDocumento(){
+        
+    }
+
     //actualizaciones? F
 }
