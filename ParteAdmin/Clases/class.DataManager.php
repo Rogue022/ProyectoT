@@ -6,7 +6,7 @@ class DataManager
 {
     private static $conexionDB = null; //nombre común a una instancia de PHP que es estática para que no se vuelva a crear cuando se vuelva a llamar
 
-    private static function iniciaConexion(): PDO
+    public static function iniciaConexion(): PDO
     {
         if (self::$conexionDB === NULL) //si no está instanciada, se crea la conexión a la BD
         {
@@ -18,8 +18,9 @@ class DataManager
                     $dotenv['DB_USER'],
                     $dotenv['DB_PASS'],
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-
+                    
                 );
+                echo "Conectada";
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
                 die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
             }
@@ -32,7 +33,7 @@ class DataManager
         self::$conexionDB = NULL;
     }
 
-    public static function _getConexion(): PDO
+    public static function _getConexion()
     {
         return self::$conexionDB;
     }
