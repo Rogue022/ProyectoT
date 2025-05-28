@@ -67,6 +67,7 @@ class ValidadorExamen
         return !$this->hayErrores();
     }
 
+    //se hace un arreglo asociativo de los datos para que se manden limpios los datos. 
     public function getDatos()
     {
         return [

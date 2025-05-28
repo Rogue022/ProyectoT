@@ -100,4 +100,16 @@ class Examen
         echo "<br>Respuestas correctas: " . $this->correctas;
         echo "<br>Calificacion: " . $this->calificacion;
     }
+
+
+    public function _getExamenFull(){
+        return [
+            'tipo_examen' => $this->tipo,
+            'fecha_examen' => $this->fecha,
+            'nombre_carrera' => $this->carrera,
+            'escuela_procedencia' => $this->escuelaP,
+            'calificacion' => $this->calificacion
+        ];
+    
+    }
 }

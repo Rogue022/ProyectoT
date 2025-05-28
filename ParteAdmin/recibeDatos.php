@@ -6,10 +6,24 @@ include 'Clases/class.DataManager.php';
 
 //1. Primero, debe de armar el examen esta cosa pasando los datos
 //del POST
-$examen = new ValidadorExamen($_POST);
+$revisarExamen = new ValidadorExamen($_POST);
 
 //primero set datos en validador
 
-$examen->validarTodo($_POST);
+if ($revisarExamen->validarTodo($_POST)) {
 
-print_r($examen->getDatos());
+    $datos = $revisarExamen->getDatos();
+
+    $examen = new Examen ($datos);
+
+    echo "Hola";
+
+    $examen->evaluar();
+
+    print_r($examen->mostrarResultados());
+
+    DataManager::insertarExamen($examen->_getExamenFull());
+    
+} else {
+    echo "Hay errores....";
+}
