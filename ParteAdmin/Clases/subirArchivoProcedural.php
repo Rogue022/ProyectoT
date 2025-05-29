@@ -1,4 +1,4 @@
-<?php 
+<?php
 header('Content-Type: text/html; charset=UTF-8');
 // Incluir autoload de Composer
 require '../vendor/autoload.php'; // Cargar las dependencias de Composer para manejar el PDF
@@ -42,7 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) { //el
             $pdf = new Fpdi();
             return $pdf->setSourceFile($archivoPDF);
         }
+
+
         $numeroPags = contarPaginasPDF($destArch);
+        
         if ($numeroPags > 30) {
             unlink($destArch); // Borra el archivo si no cumple la regla
             die("El archivo contiene más de 30 páginas.");
@@ -64,4 +67,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['archivoPDF'])) { //el
         echo "Permisos del destino: " . substr(sprintf('%o', fileperms($directorioDestino)), -4);
     }
 }
-

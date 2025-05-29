@@ -83,7 +83,13 @@ class DataManager
     }
 
 
-    public static function insertarDocumento() {}
+    public static function insertarDocumento($nuevoNombre, $destArch, $numeroPags) {
+        echo "Llegaste a insertarDocumento en datamanager";
+        echo $nuevoNombre;
+        echo $destArch;
+        echo $numeroPags;
+
+    }
 
     public static function _getUsuarios()
     {
