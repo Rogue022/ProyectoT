@@ -1,5 +1,5 @@
 <!-- Index admin -->
-<?php include("../Templates/cabeceraLateral.php");?>
+<?php include("../Templates/cabeceraLateral.php"); ?>
 
 <div class="container">
     <div class="row justify-content-center align-items-center g-2">
@@ -8,15 +8,34 @@
         </div>
         <div class="col">
             <!-- Formulario para subir PDF a la BD -->
-            <form class="ContenedorSubida" id='formularioSubida' method="POST" enctype="multipart/form-data">
-                <label for="PDF">PDF:</label>
-                <input type="file" name="archivoPDF" id="PDF" accept="application/pdf" required />
-                <button
-                    type="submit"
-                    class="btn btn-primary btn-sm">
-                    Subir
-                </button>
+
+
+
+            <form class="ContenedorSubida" id='formulario_PDF' method="POST" enctype="multipart/form-data">
+                <div class="container">
+                    
+                    <label for="pdf_input"><h6>Ingresa un PDF: </h6></label><br>
+                    <input type="file" name="archivoPDF" id="pdf_input" accept="application/pdf" required />
+                    
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-sm">
+                        Subir
+                    </button>
+                      
+
+
+
+
+
+                </div>
             </form>
+
+
+
+
+
+
         </div>
     </div>
     <!-- Muestra resultado de subida  -->
@@ -25,8 +44,6 @@
     <?php include("../ParteAdmin/formularioIngreso.php"); ?>
     <!-- fin formulario de ingreso -->
 </div>
-<script>
-    //script para subir el PDF, pero eso después. 
-</script>
+
 
 <?php include("../Templates/piePagina.php"); ?>

@@ -1,5 +1,6 @@
+<?php  ?>
 <div class="row justify-content-center align-items-center g-2">
-    <div class="col">
+    <div class="col-5">
         <!--Captura de datos manuales -->
         <section>
             <br>
@@ -151,7 +152,7 @@
                                     class="form-control"
                                     name="calificacion"
                                     id="calificacion"
-                                    default = "0"
+                                    default="0"
                                     value="0" min="0" max="10" required />
                             </div>
                             <button
@@ -166,7 +167,9 @@
         </section>
     </div>
 
-    <div class="col" id="columnaIzquierda">Aquí es PDF
+    <div class="col-7" id="columnaIzquierda">
+
+        <iframe id="visor_pdf" height="700px" width="100%"></iframe>
     </div>
 </div>
 
@@ -190,6 +193,24 @@
             .catch(error => {
                 console.error('Error al enviar los datos', error);
             })
+
+    });
+</script>
+
+<!-- script para elementos PDF -->
+<script>
+    document.getElementById('formulario_PDF').addEventListener('change', function(event) {
+        event.preventDefault();
+
+        const fileInput = document.getElementById('pdf_input')
+        const file = event.target.files[0];
+
+        if (file && file.type === "application/pdf") {
+            const fileURL = URL.createObjectURL(file);
+            document.getElementById('visor_pdf').src = fileURL;
+        } else {
+            alert("Selecciona un archivo PDF válido");
+        }
 
     });
 </script>
