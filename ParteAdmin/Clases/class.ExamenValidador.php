@@ -1,8 +1,6 @@
 <?php
-//esta clase se compone de class.Examen.php
-//usará sus atributos
-//include '../Clases/class.Examen.php';
-//En esta clase se validan los datos del examen 
+//En esta clase se validan y normalizan los datos del Examen antes de enviarlo a su clase
+
 class ValidadorExamen
 {
     private $tipo;

@@ -79,6 +79,10 @@ class Examen
         return $this->respuestas;
     }
 
+    public function _getClaveCarrera(){
+        return $this->claveCarrera;
+    }
+
     //evaluación del examen, por cada pregunta son 2 (valor estipulado en el formulario)
     public function evaluar()
     {

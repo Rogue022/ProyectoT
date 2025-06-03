@@ -1,4 +1,6 @@
 <?php  ?>
+
+<!-- Formulario de ingreso de exámenes.  -->
 <div class="row justify-content-center align-items-center g-2">
     <div class="col-5">
         <!--Captura de datos manuales -->
@@ -63,9 +65,6 @@
                                     Ingeniería en Comunicaciones y Electrónica
                                 </label>
                             </div>
-
-
-
                             <div class="form-check">
                                 <input
                                     class="form-check-input"
@@ -161,7 +160,8 @@
                             </div>
                             <button
                                 type="submit"
-                                class="btn btn-danger">
+                                class="btn btn-danger"
+                                onclick="return confirmarAgregar();">
                                 Agregar
                             </button>
 
@@ -177,14 +177,30 @@
     </div>
 </div>
 
+<!-- Script para informar si desea agregar -->
 
+<script type="text/javascript">
+    function confirmarAgregar(){
+        var respuesta = confirm("Por favor, verifica la información. ¿Deseas agregar este elemento?");
+        if (respuesta == true) 
+        {
+            return true;
+        } 
+        if (respuesta == false) 
+        {
+            return false;
+        }
+    }
+</script>
+
+<!-- Script AJAX para mostrar los resultados de la inserción -->
 <script type="text/javascript">
     document.getElementById('formularioExamen').addEventListener("submit", function(event) {
         event.preventDefault();
 
         const datosForm = new FormData(this);
 
-        fetch('recibeDatos.php', {
+        fetch('controladorDatos.php', {
                 method: 'POST',
                 body: datosForm
             })
@@ -193,6 +209,8 @@
             })
             .then(contenido => {
                 document.getElementById("columnaIzquierda").innerHTML = contenido;
+                alert("Elemento guardado");
+            
             })
             .catch(error => {
                 console.error('Error al enviar los datos', error);

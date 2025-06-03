@@ -1,4 +1,7 @@
 <?php
+
+//esto era el código procedural para subir al archivo, pero se optó por otras alternativas..
+
 header('Content-Type: text/html; charset=UTF-8');
 // Incluir autoload de Composer
 require '../vendor/autoload.php'; // Cargar las dependencias de Composer para manejar el PDF

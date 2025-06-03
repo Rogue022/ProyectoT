@@ -26,6 +26,7 @@ if ($revisarExamen->validarTodo($_POST)) {
 
     //se inserta el examen:
     DataManager::insertarExamen($examen->_getExamenFull());
+
     
 } else {
     echo "Hay errores....";
