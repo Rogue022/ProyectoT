@@ -66,9 +66,9 @@ class ValidadorExamen
         if(!isset($datos['clave_carrera'])){
             if ($datos['nombre_carrera'] == 'IC') {
                 $this->claveCarrera = 1;
-            } elseif ($datos['nombre_carrera'] == 'IM') {
+            } elseif ($datos['nombre_carrera'] == 'ICE') {
                 $this->claveCarrera = 2;
-            }elseif ($datos['nombre_carrera'] == 'ICE') {
+            }elseif ($datos['nombre_carrera'] == 'IM') {
                 $this->claveCarrera = 3;
             }elseif ($datos['nombre_carrera'] == 'ISISA') {
                 $this->claveCarrera = 4;

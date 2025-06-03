@@ -57,12 +57,15 @@
                                     class="form-check-input"
                                     type="radio"
                                     name="nombre_carrera"
-                                    id="ISISA"
-                                    value="ISISA" />
-                                <label class="form-check-label" for="ISISA">
-                                    Ingeniería en Sistemas Automotrices
+                                    id="ICE"
+                                    value="ICE" />
+                                <label class="form-check-label" for="ICE">
+                                    Ingeniería en Comunicaciones y Electrónica
                                 </label>
                             </div>
+
+
+
                             <div class="form-check">
                                 <input
                                     class="form-check-input"
@@ -79,12 +82,13 @@
                                     class="form-check-input"
                                     type="radio"
                                     name="nombre_carrera"
-                                    id="ICE"
-                                    value="ICE" />
-                                <label class="form-check-label" for="ICE">
-                                    Ingeniería en Comunicaciones y Electrónica
+                                    id="ISISA"
+                                    value="ISISA" />
+                                <label class="form-check-label" for="ISISA">
+                                    Ingeniería en Sistemas Automotrices
                                 </label>
                             </div>
+
 
                             <!-- Escuela de procedencia -->
                             <div class="mb-3">

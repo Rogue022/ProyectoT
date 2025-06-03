@@ -20,7 +20,7 @@ class DataManager
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
                 );
-                echo "Conectada";
+                echo "<br>Conectada<br>";
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
                 die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
             }
@@ -61,23 +61,50 @@ class DataManager
         self::iniciaConexion();
 
         try {
-            //1. preparar
+            //como el insert de un examen involucra un buen de tablas, hay que hacerlo en orden y con paciencia
+            //y por supuesto con control de transacciones.
+            //1. Se inician las transacciones
+            self::$conexionDB->beginTransaction();
+            
+
+            //1. Insertar en PROCEDENCIA
+            $insertProcedencia = self::$conexionDB->prepare("INSERT INTO procedencia (nomProcedencia) VALUES (:escuelaProcedencia)");
+            $insertProcedencia->execute([':escuelaProcedencia' => $examen['escuela_procedencia']]);
+            //recuperamos el id de procedencia
+            $idProcedencia = self::$conexionDB->lastInsertId();
+
+
+            //2. Insertar en PARAMETROSEXAMEN
+            $insertParam = self::$conexionDB->prepare("INSERT INTO parametrosexamen (nomExamen, FechaExamen, Semestre) VALUES 
+                                                        (:nomExamen, :fechaExamen, :semestre)");
+            $insertParam->execute([':nomExamen' => $examen['tipo_examen'],
+                                    ':fechaExamen' => $examen['fecha_examen'],
+                                    ':semestre' => 1
+                                    ]);
+            //recuperamos el id de parametros examen
+            $idParametros = self::$conexionDB->lastInsertId();
+            
+            //3. insertar un nuevo elemento
             $query = self::$conexionDB->prepare("INSERT INTO elemento 
-                                                (tipo, fecha, nom_carrera, esc_proc, calificacion) VALUES 
-                                                (:tipo, :fecha, :nom_carrera, :esc_proc, :calificacion)");
-            //se ponen marcadores (placeholders) para facilitar el manejo de los datos
-            //2. ejecutar
+                                                (Carrera_idCarrera, Procedencia_idProcedencia, ParametrosExamen_idExamen, Calificacion, NumReactivos) VALUES 
+                                                (:carrera, :procedencia, :param_exam, :calificacion, :numReactivos)");
+            
             $query->execute([
-                ':tipo' => $examen['tipo_examen'],
-                ':fecha' => $examen['fecha_examen'],
-                ':nom_carrera' => $examen['nombre_carrera'],
-                ':esc_proc' => $examen['escuela_procedencia'],
-                ':calificacion' => $examen['calificacion']
+                ':carrera' => $examen['clave_carrera'],
+                ':procedencia' => $idProcedencia,
+                ':param_exam' => $idParametros,
+                ':calificacion' => $examen['calificacion'],
+                ':numReactivos' => 5
             ]);
 
             echo "<br>Inserción exitosa";
+
+            self::$conexionDB->commit();
+
         } catch (PDOException $e) {
-            echo "Error:  $e";
+            self::$conexionDB->rollBack();
+            echo "Hubo un error al ingresar tu examen....";
+            echo "Error: ". $e->getMessage();
         }
     }
 

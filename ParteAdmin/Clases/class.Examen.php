@@ -19,7 +19,7 @@ class Examen
         $this->tipo = $datos['tipo_examen'];
         $this->fecha = $datos['fecha_examen'];
         $this->carrera = $datos['nombre_carrera'];
-        $this->carrera = $datos['clave_carrera'];
+        $this->claveCarrera = $datos['clave_carrera'];
         $this->escuelaP = $datos['escuela_procedencia'];
         $this->respuestas = [
             $datos['pregunta_1'] ,
@@ -110,6 +110,7 @@ class Examen
             'tipo_examen' => $this->tipo,
             'fecha_examen' => $this->fecha,
             'nombre_carrera' => $this->carrera,
+            'clave_carrera' => $this->claveCarrera,
             'escuela_procedencia' => $this->escuelaP,
             'calificacion' => $this->calificacion
         ];
