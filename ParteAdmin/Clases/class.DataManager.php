@@ -41,9 +41,8 @@ class DataManager
     public static function muestraConexion()
     {
         try {
-            $nuevaConexion = self::iniciaConexion();
-
-            if ($nuevaConexion instanceof PDO) {
+            self::iniciaConexion();
+            if (self::$conexionDB instanceof PDO) {
                 echo "Conectada";
             } else {
                 echo "error";
@@ -55,6 +54,7 @@ class DataManager
 
     //altas y bajas
 
+    //insertar datos del examen (viene de formulario)
     public static function insertarExamen($examen)
     {
 
@@ -62,13 +62,12 @@ class DataManager
 
         try {
             //1. preparar
-            $query = self::$conexionDB->prepare("INSERT INTO examen 
-                                                (idExamen, tipo, fecha, nom_carrera, esc_proc, calificacion) VALUES 
-                                                (:id, :tipo, :fecha, :nom_carrera, :esc_proc, :calificacion)");
+            $query = self::$conexionDB->prepare("INSERT INTO elemento 
+                                                (tipo, fecha, nom_carrera, esc_proc, calificacion) VALUES 
+                                                (:tipo, :fecha, :nom_carrera, :esc_proc, :calificacion)");
             //se ponen marcadores (placeholders) para facilitar el manejo de los datos
             //2. ejecutar
             $query->execute([
-                ':id' => 2,
                 ':tipo' => $examen['tipo_examen'],
                 ':fecha' => $examen['fecha_examen'],
                 ':nom_carrera' => $examen['nombre_carrera'],
@@ -82,7 +81,7 @@ class DataManager
         }
     }
 
-
+    //para insertar un key que se genere por cada documento pdf subido
     public static function insertarDocumento($nuevoNombre, $destArch, $numeroPags) {
         echo "Llegaste a insertarDocumento en datamanager";
         echo $nuevoNombre;
@@ -94,10 +93,20 @@ class DataManager
     public static function _getUsuarios()
     {
         self::iniciaConexion();
+       
         try {
-            $sql = "SELECT * FROM Usuarios";
-            $listaUsuarios = self::$conexionDB->query($sql);
+            $sql = 'SELECT * FROM Usuarios';
+            //query es una clase de PDO que se usa para
+            //ejecutar una sentencia SQL directamente cuando no
+            //necesitas usar parámetros
+            //devuelve un objeto de tipo PDOStatement, que es la consulta preparada o ejecutada
+            //permite extraer los datos fila por fila o todos juntos
+            $stmt = self::$conexionDB->query($sql);
+            $listaUsuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             return $listaUsuarios;
+
+            
         } catch (PDOException $E) {
             echo $E;
         }

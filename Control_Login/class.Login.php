@@ -5,8 +5,6 @@ include_once(__DIR__ . '/../ParteAdmin/Clases/class.DataManager.php');
 
 class Login
 {
-
-
     private $nomUsuario;
     private $passW;
     private $tipoUsuario;
@@ -88,18 +86,21 @@ class Login
 
     public function preparaLogin()
     {
-        $this->hacerConexion();
 
         $usuarios = DataManager::_getUsuarios();
-
+        //print_r($usuarios);
+        
         if ($_POST) {
 
             $this->nomUsuario = $_POST['usuario'];
             $this->passW = $_POST['password'];
 
             $this->usuarioValido = FALSE;  
+
+        
             //buscará entre la lista de los usuarios
             foreach ($usuarios as $usuario) {
+                
                 if ($usuario['NombreUsuario'] === $this->nomUsuario
                     && $usuario['Password'] === $this->passW) 
                 {

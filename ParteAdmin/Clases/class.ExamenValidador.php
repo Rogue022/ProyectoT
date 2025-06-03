@@ -11,6 +11,7 @@ class ValidadorExamen
     private $escuelaP;
     private $preguntas = [];
     private $errores = [];
+    private $claveCarrera;
 
     //esta función va a recibir los datos del post y va a comprobar que no hayan elementos vacíos
     public function validarCamposVacios($datos)
@@ -29,7 +30,9 @@ class ValidadorExamen
         if (empty($datos['escuela_procedencia'])) {
             $this->errores['escuela_procedencia'] = "Falta completar escuela de procedencia";
         }
+        
     }
+
 
     //esta va a validar la escuela de procedencia y que sea de más de 3 caracteres. 
     public function validarEscuela($nombreEscuela)
@@ -58,12 +61,31 @@ class ValidadorExamen
         return $this->errores;
     }
 
+    public function ponerClave($datos){
+
+        if(!isset($datos['clave_carrera'])){
+            if ($datos['nombre_carrera'] == 'IC') {
+                $this->claveCarrera = 1;
+            } elseif ($datos['nombre_carrera'] == 'IM') {
+                $this->claveCarrera = 2;
+            }elseif ($datos['nombre_carrera'] == 'ICE') {
+                $this->claveCarrera = 3;
+            }elseif ($datos['nombre_carrera'] == 'ISISA') {
+                $this->claveCarrera = 4;
+            }
+
+            
+        }
+    }
+
     public function validarTodo($datos)
     {
         $this->setDatos($datos);
+        $this->ponerClave($datos);
         $this->validarCamposVacios($datos);
         $this->validarEscuela($datos['escuela_procedencia'] ?? '');
         $this->normalizarTipo($datos);
+        
         return !$this->hayErrores();
     }
 
@@ -73,7 +95,8 @@ class ValidadorExamen
         return [
             'tipo_examen' => $this->tipo,
             'fecha_examen' => $this->fecha,
-            'nombre_carrera' => $this->carrera,
+            'nombre_carrera' => $this->carrera,            
+            'clave_carrera' => $this->claveCarrera,
             'escuela_procedencia' => $this->escuelaP,
             'pregunta_1' => $this->preguntas[0],
             'pregunta_2' => $this->preguntas[1],
