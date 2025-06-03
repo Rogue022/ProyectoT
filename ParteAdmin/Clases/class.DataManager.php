@@ -65,30 +65,36 @@ class DataManager
             //y por supuesto con control de transacciones.
             //1. Se inician las transacciones
             self::$conexionDB->beginTransaction();
-            
+
 
             //1. Insertar en PROCEDENCIA
-            $insertProcedencia = self::$conexionDB->prepare("INSERT INTO procedencia (nomProcedencia) VALUES (:escuelaProcedencia)");
+            $insertProcedencia = self::$conexionDB->prepare("INSERT INTO procedencia (nomProcedencia, apariciones) VALUES (:escuelaProcedencia, 1)
+                                                            ON DUPLICATE KEY UPDATE apariciones = apariciones+1");
             $insertProcedencia->execute([':escuelaProcedencia' => $examen['escuela_procedencia']]);
-            //recuperamos el id de procedencia
-            $idProcedencia = self::$conexionDB->lastInsertId();
+
+
+            //para recuperar el id de procedencia, debemos de buscar el último id para ponerlo en elemento (Examen)
+            $recupera = self::$conexionDB->prepare("SELECT idProcedencia FROM procedencia WHERE nomProcedencia = :nombre");
+            $recupera->execute([':nombre' => $examen['escuela_procedencia']]);
+            $idProcedencia = $recupera->fetchColumn();
 
 
             //2. Insertar en PARAMETROSEXAMEN
             $insertParam = self::$conexionDB->prepare("INSERT INTO parametrosexamen (nomExamen, FechaExamen, Semestre) VALUES 
                                                         (:nomExamen, :fechaExamen, :semestre)");
-            $insertParam->execute([':nomExamen' => $examen['tipo_examen'],
-                                    ':fechaExamen' => $examen['fecha_examen'],
-                                    ':semestre' => 1
-                                    ]);
+            $insertParam->execute([
+                ':nomExamen' => $examen['tipo_examen'],
+                ':fechaExamen' => $examen['fecha_examen'],
+                ':semestre' => 1
+            ]);
             //recuperamos el id de parametros examen
             $idParametros = self::$conexionDB->lastInsertId();
-            
+
             //3. insertar un nuevo elemento
             $query = self::$conexionDB->prepare("INSERT INTO elemento 
                                                 (Carrera_idCarrera, Procedencia_idProcedencia, ParametrosExamen_idExamen, Calificacion, NumReactivos) VALUES 
                                                 (:carrera, :procedencia, :param_exam, :calificacion, :numReactivos)");
-            
+
             $query->execute([
                 ':carrera' => $examen['clave_carrera'],
                 ':procedencia' => $idProcedencia,
@@ -99,28 +105,29 @@ class DataManager
 
             echo "<br>Inserción exitosa";
 
+            //se hace commit al final, si no, rollback
             self::$conexionDB->commit();
-
         } catch (PDOException $e) {
+            //aquí es el rollback: 
             self::$conexionDB->rollBack();
             echo "Hubo un error al ingresar tu examen....";
-            echo "Error: ". $e->getMessage();
+            echo "Error: " . $e->getMessage();
         }
     }
 
     //para insertar un key que se genere por cada documento pdf subido
-    public static function insertarDocumento($nuevoNombre, $destArch, $numeroPags) {
+    public static function insertarDocumento($nuevoNombre, $destArch, $numeroPags)
+    {
         echo "Llegaste a insertarDocumento en datamanager";
         echo $nuevoNombre;
         echo $destArch;
         echo $numeroPags;
-
     }
 
     public static function _getUsuarios()
     {
         self::iniciaConexion();
-       
+
         try {
             $sql = 'SELECT * FROM Usuarios';
             //query es una clase de PDO que se usa para
@@ -132,8 +139,6 @@ class DataManager
             $listaUsuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $listaUsuarios;
-
-            
         } catch (PDOException $E) {
             echo $E;
         }
