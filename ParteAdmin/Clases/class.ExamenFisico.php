@@ -7,6 +7,9 @@ include_once(__DIR__ . '/../ParteAdmin/Clases/class.DataManager.php');
 require '../vendor/autoload.php'; // Cargar las dependencias de Composer para manejar el PDF
 use setasign\Fpdi\Fpdi; // Uso de namespaces
 
+//incluir el microservicio en Python
+
+
 
 //lo que va a hacer esta clase es que va a guardar y a administrar el examen físico (que será escaneado)
 
@@ -18,6 +21,14 @@ class ExamenFisico extends Examen
     private $numeroPags = 0;
     private $ultimo_id;
     private $destArch;
+    
+    private string $endpoint;
+
+    public function __construct($endpoint = "http://localhost:5000/ocr")
+    {
+        $this->endpoint = $endpoint;
+
+    }
 
     public function verificaArchivo($arch_tmp)
     {
@@ -99,5 +110,41 @@ class ExamenFisico extends Examen
         } else {
             echo "Archivo subido, pero no se pudo insertar en la base de datos.";
         }
+    } 
+
+    public function preprocesarIMG(){
+        //llamar a microservicio de preprocesamiento mediante PYTHON
     }
+
+
+    public function procesarImagen(string $rutaImagen):array{
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $this->endpoint,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => [
+                'image' => new CURLFile($rutaImagen)
+            ]
+        ]);
+        
+        $respuesta = curl_exec($curl);
+
+        curl_close($curl);
+
+
+        if(!$respuesta){
+            throw new Exception ("Error al comunicarse con el microservicio");
+        }
+
+        $resultado = json_decode($respuesta, true);
+
+        if(!isset($resultado['text'])){
+            throw new Exception ("Respuesta inválida del OCR");
+        }
+
+        return $resultado;
+    }
+
+    
 }

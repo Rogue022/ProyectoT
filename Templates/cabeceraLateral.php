@@ -63,7 +63,7 @@ $sesion = new Sesion;
                                 <a href="/ParteAdmin/pantallaCaptura.php" class="sidebar-link">Capturar mediante formulario</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Capturar mediante OCR</a>
+                                <a href="/ParteAdmin/pantallaOCR.php" class="sidebar-link">Capturar mediante OCR</a>
                             </li>
                         </ul>
                     </li>

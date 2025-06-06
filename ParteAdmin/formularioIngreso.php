@@ -1,5 +1,3 @@
-<?php  ?>
-
 <!-- Formulario de ingreso de exámenes.  -->
 <div class="row justify-content-center align-items-center g-2">
     <div class="col-5">
@@ -222,6 +220,25 @@
 <!-- script para elementos PDF -->
 <script>
     document.getElementById('formulario_PDF').addEventListener('change', function(event) {
+        event.preventDefault();
+
+        const fileInput = document.getElementById('pdf_input')
+        const file = event.target.files[0];
+
+        if (file && file.type === "application/pdf") {
+            const fileURL = URL.createObjectURL(file);
+            document.getElementById('visor_pdf').src = fileURL;
+        } else {
+            alert("Selecciona un archivo PDF válido");
+        }
+
+    });
+</script>
+
+<!-- Poner otro script para el formulario OCR -->
+
+<script>
+    document.getElementById('formulario_OCR_PDF').addEventListener('change', function(event) {
         event.preventDefault();
 
         const fileInput = document.getElementById('pdf_input')
