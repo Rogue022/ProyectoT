@@ -129,7 +129,7 @@ class DataManager
         self::iniciaConexion();
 
         try {
-            $sql = 'SELECT * FROM Usuarios';
+            $sql = 'SELECT * FROM usuarios';
             //query es una clase de PDO que se usa para
             //ejecutar una sentencia SQL directamente cuando no
             //necesitas usar parámetros
