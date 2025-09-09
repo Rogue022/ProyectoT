@@ -20,7 +20,7 @@ class DataManager
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
                 );
-                echo "<br>Conectada<br>";
+                //echo "<br>Conectadx<br>";
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
                 die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
             }
@@ -43,7 +43,7 @@ class DataManager
         try {
             self::iniciaConexion();
             if (self::$conexionDB instanceof PDO) {
-                echo "Conectada";
+                echo "Estás conectada";
             } else {
                 echo "error";
             }

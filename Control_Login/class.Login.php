@@ -104,8 +104,10 @@ class Login
                 if ($usuario['NombreUsuario'] === $this->nomUsuario
                     && $usuario['Password'] === $this->passW) 
                 {
-                    echo "Tu usuario es $this->nomUsuario";
+                    
                     $this->usuarioValido = TRUE;
+
+                    
                     $_SESSION['usuario'] = $usuario['NombreUsuario'];
                     $_SESSION['tipo'] = $usuario['TipoUsuario'];
                     
@@ -115,6 +117,10 @@ class Login
                     } elseif ($usuario['TipoUsuario'] === 2) {
                         //que vaya al index profesor
                         header('Location:Maestro/maestroIndex.php');
+                    }
+                     elseif ($usuario['TipoUsuario'] === 3) {
+                        //que vaya al index profesor
+                        header('Location:Maestro/alumniIndex.php');
                     }
                     exit;
                 }

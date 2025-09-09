@@ -62,7 +62,7 @@ $login->preparaLogin();
                                         class="form-control my-4 py-2" 
                                         placeholder="Usuario" />
                                     <input 
-                                        type="text" 
+                                        type="password" 
                                         name="password" 
                                         id="password" 
                                         class="form-control my-4 py-2" 
@@ -75,9 +75,6 @@ $login->preparaLogin();
                                         <a href="" class="nav-link">FAQ</a>
                                     </div>
                                 </form>
-
-
-
                             </div>
                         </div>
                     </div>
