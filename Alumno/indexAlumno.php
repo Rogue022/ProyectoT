@@ -1,56 +1,49 @@
-<!-- Cosas por hacer:
-    1. Proteger el acceso a ciertas páginas (como ingresar información)
+<!DOCTYPE html>
+<!-- en caso de:  <html lang="en" data-bs-theme="dark">  -->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="/Alumno/CSSAlumno/estiloA.css">
+
+</head>
+
+<body>
     
--->
+    <div class="grid-container">
+    <!-- Header -->
+    <header class="header">
 
-<?php
-//establecer la fecha en la zona de cdmx
-date_default_timezone_set('America/Mexico_City');
+    </header>
+    <!-- End header -->
 
-//establecer el idioma
-setlocale(LC_TIME, 'es_MX.UTF-8');
+    <!--Sidebar  -->
+    <aside id="sidebar">
 
-/*Cabecera lateral */
-include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
+    </aside>
+    <!-- End Sidebar -->
 
-?>
+    <!-- Main -->
+    <main class="main-container">
+        
+    </main>
 
-<main class="content px-3 py-2">
-    <div class="container-fluid">
-        <div class="mb-3">
-            <h4><?php echo date("F j, Y, g:i a"); ?> </h4>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6 d-flex">
-                <div class="card flex-fill border-0 illustration">
-                    <div class="card-body p-0 d-flex flex-fill">
-                        <div class="row g-0 w-100">
-
-                            <!-- columnas del card -->
-
-                            <div class="col-12">
-                                <div class="p-3 m-1">
-                                    <h1>Profesor</h1>
-                                    <p>Seleccione una tarea del menú de la izquierda</p>
-
-                                </div>
-                            </div>
-                            <!-- Si hace falta otra columna
-                            <div class="col-6 align-self-end text-end">
-                            </div>
-                            -->
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Columnas a la derecha si se requieren -->
-
-        </div>
+    <!-- End Main -->
     </div>
 
-</main>
+     <!--Sidebar  -->
+    <div id="sidebar">
 
+    </div>
+    <!-- End Sidebar -->
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/Templates/piePagina.php'; ?>
+    <!-- Scripting -->
+    <script>
+
+    </script>
+</body>
+</html>
