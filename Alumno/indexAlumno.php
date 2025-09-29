@@ -13,37 +13,61 @@
 </head>
 
 <body>
-    
+
     <div class="grid-container">
-    <!-- Header -->
-    <header class="header">
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon">
 
-    </header>
-    <!-- End header -->
+            </div>
+        </header>
+        <!-- End header -->
 
-    <!--Sidebar  -->
-    <aside id="sidebar">
+        <!--Sidebar  -->
+        <aside id="sidebar">
 
-    </aside>
-    <!-- End Sidebar -->
+        </aside>
+        <!-- End Sidebar -->
 
-    <!-- Main -->
-    <main class="main-container">
-        
-    </main>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title"><h3>Bienvenido alumno</h3></div>
 
-    <!-- End Main -->
-    </div>
 
-     <!--Sidebar  -->
-    <div id="sidebar">
+            <div class="main-cards">
+                <div class="card">
+                    <div class="card-inner">
+                        <h4>Revisión de examen [aquí va un ícono]</h4>
+                    </div>
+                </div>
 
-    </div>
-    <!-- End Sidebar -->
+                <div class="card">
+                    <div class="card-inner">
+                        <h4>Enviar información</h4>
+                    </div>
+                </div>
 
-    <!-- Scripting -->
-    <script>
+                <div class="card">
+                    <div class="card-inner">
+                        <h4>Finalizar sesión [aquí va un ícono]</h4>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-    </script>
+        <!-- End Main -->
+
+
+        <!--Sidebar  -->
+        <div id="sidebar">
+
+        </div>
+        <!-- End Sidebar -->
+
+        <!-- Scripting -->
+        <script>
+
+        </script>
 </body>
+
 </html>
