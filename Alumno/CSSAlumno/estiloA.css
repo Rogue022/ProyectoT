@@ -30,8 +30,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px 0 px;
-    box-shadow: 0 6px 7px -3px rgba(138, 104, 104, 0.35);
+    padding: 0 30px 0px;
+    box-shadow: 0 6px 7px -3px rgba(45, 1, 1, 0.808);
+    background-color: #263043;
 }
 
 
@@ -81,7 +82,7 @@ body{
 }
 
 .card:nth-child(2){
-    background-color: blueviolet;
+    background-color: rgb(184, 119, 246);
 }
 
 
