@@ -37,20 +37,23 @@
             <div class="main-cards">
                 <div class="card">
                     <div class="card-inner">
-                        <h4>Revisión de examen [aquí va un ícono]</h4>
+                    <img src="ImgA/img1.png" style="width: 200px; height: 150px;" alt="Revisar examen">  
                     </div>
+                    <h4>Revisión de examen</h4>
                 </div>
 
                 <div class="card">
-                    <div class="card-inner">
+                    <div class="card-inner"><img src="ImgA/img2.png" style="width: 200px; height: 150px;" alt="Enviar información">  
+                    </div>
                         <h4>Enviar información</h4>
-                    </div>
+    
                 </div>
 
                 <div class="card">
                     <div class="card-inner">
-                        <h4>Finalizar sesión [aquí va un ícono]</h4>
+                        <img src="ImgA/img3.png" style="width: 200px; height: 150px;" alt="Finalizar sesión">  
                     </div>
+                        <h4>Finalizar sesión</h4>
                 </div>
             </div>
         </main>
