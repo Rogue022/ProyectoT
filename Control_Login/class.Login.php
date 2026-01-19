@@ -120,7 +120,7 @@ class Login
                     }
                      elseif ($usuario['TipoUsuario'] === 3) {
                         //que vaya al index profesor
-                        header('Location:Maestro/alumniIndex.php');
+                        header('Location:Alumno/indexAlumno.php');
                     }
                     exit;
                 }
