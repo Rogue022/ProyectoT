@@ -1,3 +1,22 @@
+# ====== ENV ======
 ParteAdmin/Clases/.env
-ParteAdmin/Uploads
-vendor/
+.env
+
+# ====== Uploads ======
+ParteAdmin/Uploads/
+
+# ====== Dependencias ======
+/vendor/
+
+# ====== Composer ======
+composer.phar
+composer.lock
+
+# ====== IDE / SO =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ====== Logs ======
+*.log
