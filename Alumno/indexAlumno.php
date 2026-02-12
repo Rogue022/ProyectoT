@@ -40,25 +40,31 @@
                 <div class="card">
                     <h4 class="card-title mx-auto">Revisión de examen</h4>
                     <div class="card-inner mx-auto">
-                        <img src="ImgA/img1.png" style="width: 150px; height: 150px;" alt="Revisar examen">
+                        <a href="../Alumno/revision.php">
+                            <img src="ImgA/img1.png" style="width: 150px; height: 150px;" alt="Revisar examen">
+                        </a>
                     </div>
-                    
                 </div>
 
                 <div class="card">
                     <h4 class="card-title mx-auto">Enviar información</h4>
-                    <div class="card-inner mx-auto"><img src="ImgA/img2.png" style="width: 150px; height: 150px;" alt="Enviar información">
+                    <div class="card-inner mx-auto">
+                        <a href="../Alumno/enviarInformacion.php">
+                        <img src="ImgA/img2.png" style="width: 150px; height: 150px;" alt="Enviar información">
+                        </a>
                     </div>
-                    
+
 
                 </div>
 
                 <div class="card">
                     <h4 class="card-title mx-auto">Finalizar sesión</h4>
                     <div class="card-inner mx-auto">
+                        <a href="../Alumno/endSession.php">
                         <img src="ImgA/img3.png" style="width: 150px; height: 150px;" alt="Finalizar sesión">
+                        </a>
                     </div>
-                    
+
                 </div>
             </div>
         </main>
