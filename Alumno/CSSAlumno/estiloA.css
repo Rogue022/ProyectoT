@@ -104,3 +104,42 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+
+
+/* End sesion  */
+
+@keyframes fade-in {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    100%{
+        opacity: 0;
+    }
+    0%{
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+/***** Modal *****/ 
+
+dialog::backdrop{
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+}
+
+/***** End Modal *****/

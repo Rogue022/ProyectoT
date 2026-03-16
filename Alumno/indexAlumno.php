@@ -37,33 +37,36 @@
 
 
             <div class="main-cards">
-                <a href="../Alumno/revision.php">
-                    <div class="card">
+                
+                    <div class="card" onclick="revision()">
                         <h4 class="card-title mx-auto card-2">Revisión de examen</h4>
                         <div class="card-inner mx-auto">
                             <img src="ImgA/img1.png" style="width: 150px; height: 150px;" alt="Revisar examen">
                         </div>
                     </div>
-                </a>
                 
-                <a href="../Alumno/enviarInformacion.php">
-                    <div class="card">
-                        <h4 class="card-title mx-auto">Enviar información</h4>
-                        <div class="card-inner mx-auto">
-                            <img src="ImgA/img2.png" style="width: 150px; height: 150px;" alt="Enviar información">
-                        </div>
+
+                <div class="card" onclick="enviarInfo()">
+                    <h4 class="card-title mx-auto">Enviar información</h4>
+                    <div class="card-inner mx-auto">
+                        <img src="ImgA/img2.png" style="width: 150px; height: 150px;" alt="Enviar información">
                     </div>
-                </a>
+                </div>
+
+                <div class="card" id="openDialog">
+                    <h4 class="card-title mx-auto">Finalizar sesión</h4>
+                    <div class="card-inner mx-auto">
+                        <img src="ImgA/img3.png" style="width: 150px; height: 150px;" alt="Finalizar sesión">
+                    </div>
+                </div>
 
 
-                <a href="../Alumno/endSession.php">
-                    <div class="card">
-                        <h4 class="card-title mx-auto">Finalizar sesión</h4>
-                        <div class="card-inner mx-auto">
-                            <img src="ImgA/img3.png" style="width: 150px; height: 150px;" alt="Finalizar sesión">
-                        </div>
-                    </div>
-                </a>
+                <dialog id="modal" class="dialog">
+                    <h1>Finalizar sesión </h1>
+                    <p>Una vez finalizada la sesión, no podrás regresar. ¿Finalizar?</p>
+                    <button type="button" class="btn btn-info" id="closeDialog">Regresar</button>
+                    <button type="button" class="btn btn-warning" id="endDialog">Finalizar</button>
+                </dialog>
 
 
             </div>
@@ -71,16 +74,35 @@
 
         <!-- End Main -->
 
-
-        <!--Sidebar  -->
-        <div id="sidebar">
-
-        </div>
-        <!-- End Sidebar -->
-
         <!-- Scripting -->
         <script>
+            const dialog = document.getElementById('modal');
+            const btnOpen = document.getElementById('openDialog');
+            const btnClose = document.getElementById('closeDialog');
+            const btnEnd = document.getElementById('endDialog');
 
+            function revision() {
+                window.location.href = "../Alumno/revision.php";
+            }
+
+            function enviarInfo() {
+                window.location.href = "../Alumno/enviarInformacion.php";
+            }
+
+            btnOpen.addEventListener('click', e => {
+                dialog.showModal();
+                k
+            });
+
+            btnClose.addEventListener('click', e => {
+                dialog.close();
+            });
+
+            btnEnd.addEventListener('click', e => {
+                e.preventDefault();
+                sessionStorage.clear();
+                window.location.href = "../index.php";
+            });
         </script>
 </body>
 
