@@ -1,3 +1,25 @@
+<?php 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+include_once(__DIR__ . '/../Control_Login/class.Login.php');
+
+$alumno = new Usuario();
+
+if(isset($_SESSION['usuario'])){
+    echo $_SESSION['usuario'];
+}else{
+    echo "No hay sesión activa";
+}
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <!-- en caso de:  <html lang="en" data-bs-theme="dark">  -->
 <html lang="es">
@@ -100,8 +122,19 @@
 
             btnEnd.addEventListener('click', e => {
                 e.preventDefault();
-                sessionStorage.clear();
-                window.location.href = "../index.php";
+
+                fetch("/Control_Login/logout.php").then(
+                    response=>{
+                        sessionStorage.clear();
+                        window.location.href = "../index.php";
+                    }
+                    
+                )
+                .catch(error=>console.error("Error cerrando sesión", error));
+                window.alert("Sesión finalizada");
+
+                
+
             });
         </script>
 </body>

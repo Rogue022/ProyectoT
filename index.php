@@ -1,8 +1,9 @@
 <?php 
+session_start();
+
 include_once ('Control_Login/class.Login.php');
 include_once ('ParteAdmin/Clases/class.DataManager.php');
 $login = new Login();
-
 
 $login->preparaLogin();
 ?>

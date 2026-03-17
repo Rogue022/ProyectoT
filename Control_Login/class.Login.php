@@ -16,7 +16,7 @@ class Login
 
     public function __construct()
     {
-        
+
         $this->rol = "";
         $this->tipoUsuario = "";
         $this->expiracion = "";
@@ -25,9 +25,9 @@ class Login
         $this->usuarioValido = NULL;
     }
 
-    public function _getMensaje()
+    public function _getUsuario()
     {
-        return $this->mensaje;
+        return $this->nomUsuario;
     }
 
     public function _getRol()
@@ -43,22 +43,30 @@ class Login
         return $this->expiracion;
     }
 
-    private function _getUsuario()
+    public function _getMensaje()
     {
-        return $this->nomUsuario;
+        return $this->mensaje;
     }
+
 
     private function _getContra()
     {
         return $this->passW;
     }
 
-    public function _getUsuarioValido(){
+    public function _getUsuarioValido()
+    {
         return $this->usuarioValido;
     }
 
 
-    //setterss
+    //setter
+
+    public function _setUsuario($nomUsuario)
+    {
+        return $this->nomUsuario = $nomUsuario;
+    }
+
     public function _setMensaje($mensaje)
     {
         return $this->mensaje = $mensaje;
@@ -78,48 +86,58 @@ class Login
     }
 
     //métodos:::
+
+    public function muestraUsuario(){
+        echo $this->nomUsuario;
+    }
+
     private function hacerConexion()
     {
         DataManager::iniciaConexion();
         $this->conexionBD = DataManager::_getConexion();
     }
 
+    
+
     public function preparaLogin()
     {
 
         $usuarios = DataManager::_getUsuarios();
         //print_r($usuarios);
-        
+
         if ($_POST) {
 
             $this->nomUsuario = $_POST['usuario'];
             $this->passW = $_POST['password'];
 
-            $this->usuarioValido = FALSE;  
+            $this->usuarioValido = FALSE;
 
-        
+
             //buscará entre la lista de los usuarios
             foreach ($usuarios as $usuario) {
-                
-                if ($usuario['NombreUsuario'] === $this->nomUsuario
-                    && $usuario['Password'] === $this->passW) 
-                {
-                    
+
+                if (
+                    $usuario['NombreUsuario'] === $this->nomUsuario
+                    && $usuario['Password'] === $this->passW
+                ) {
+
                     $this->usuarioValido = TRUE;
 
-                    
+
                     $_SESSION['usuario'] = $usuario['NombreUsuario'];
                     $_SESSION['tipo'] = $usuario['TipoUsuario'];
-                    
+
                     if ($usuario['TipoUsuario'] === 1) {
                         //que vaya al index admin
                         header('Location:ParteAdmin/adminIndex.php');
                     } elseif ($usuario['TipoUsuario'] === 2) {
                         //que vaya al index profesor
                         header('Location:Maestro/maestroIndex.php');
-                    }
-                     elseif ($usuario['TipoUsuario'] === 3) {
-                        //que vaya al index profesor
+                    } elseif ($usuario['TipoUsuario'] === 3) {
+                        //que vaya al index alumno
+
+                        $this->_setUsuario($usuario['NombreUsuario']);
+
                         header('Location:Alumno/indexAlumno.php');
                     }
                     exit;
@@ -130,4 +148,27 @@ class Login
             $this->_setMensaje("Error. Verifica tus datos");
         }
     }
+
+
+    public function logOut(){
+        session_start();
+        session_unset();
+        session_destroy();
+
+        header("../index.php");
+
+        exit;
+    }
+}
+
+
+class Usuario extends Login{
+    
+
+
+    public function printUsuario(){
+        return $_POST['usuario'];
+    }
+
+
 }
