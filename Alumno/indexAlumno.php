@@ -16,10 +16,6 @@ if(isset($_SESSION['usuario'])){
     exit;
 }
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
