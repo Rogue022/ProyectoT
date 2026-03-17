@@ -3,9 +3,19 @@ session_start();
 
 include_once ('Control_Login/class.Login.php');
 include_once ('ParteAdmin/Clases/class.DataManager.php');
-$login = new Login();
 
+if(isset($_GET['expired'])):
+    echo "<p>Tu sesión ha expirado. Por favor inicia sesión. </p>";
+endif;
+
+
+$login = new Login();
 $login->preparaLogin();
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -11,7 +11,9 @@ $alumno = new Usuario();
 if(isset($_SESSION['usuario'])){
     echo $_SESSION['usuario'];
 }else{
-    echo "No hay sesión activa";
+    echo "<script>alert('Por favor, inicia sesión');</script>";
+    header("Location: ../index.php?expired=1");
+    exit;
 }
 
 
@@ -113,7 +115,7 @@ if(isset($_SESSION['usuario'])){
 
             btnOpen.addEventListener('click', e => {
                 dialog.showModal();
-                k
+                
             });
 
             btnClose.addEventListener('click', e => {
