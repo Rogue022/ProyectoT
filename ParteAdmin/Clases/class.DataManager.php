@@ -68,19 +68,19 @@ class DataManager
 
 
             //1. Insertar en PROCEDENCIA
-            $insertProcedencia = self::$conexionDB->prepare("INSERT INTO procedencia (nomProcedencia, apariciones) VALUES (:escuelaProcedencia, 1)
+            $insertProcedencia = self::$conexionDB->prepare("INSERT INTO Procedencia (nomProcedencia, Apariciones) VALUES (:escuelaProcedencia, 1)
                                                             ON DUPLICATE KEY UPDATE apariciones = apariciones+1");
             $insertProcedencia->execute([':escuelaProcedencia' => $examen['escuela_procedencia']]);
 
 
             //para recuperar el id de procedencia, debemos de buscar el último id para ponerlo en elemento (Examen)
-            $recupera = self::$conexionDB->prepare("SELECT idProcedencia FROM procedencia WHERE nomProcedencia = :nombre");
+            $recupera = self::$conexionDB->prepare("SELECT idProcedencia FROM Procedencia WHERE nomProcedencia = :nombre");
             $recupera->execute([':nombre' => $examen['escuela_procedencia']]);
             $idProcedencia = $recupera->fetchColumn();
 
 
             //2. Insertar en PARAMETROSEXAMEN
-            $insertParam = self::$conexionDB->prepare("INSERT INTO parametrosexamen (nomExamen, FechaExamen, Semestre) VALUES 
+            $insertParam = self::$conexionDB->prepare("INSERT INTO ParametrosExamen (nomExamen, FechaExamen, Semestre) VALUES 
                                                         (:nomExamen, :fechaExamen, :semestre)");
             $insertParam->execute([
                 ':nomExamen' => $examen['tipo_examen'],
@@ -91,7 +91,7 @@ class DataManager
             $idParametros = self::$conexionDB->lastInsertId();
 
             //3. insertar un nuevo elemento
-            $query = self::$conexionDB->prepare("INSERT INTO elemento 
+            $query = self::$conexionDB->prepare("INSERT INTO Elemento 
                                                 (Carrera_idCarrera, Procedencia_idProcedencia, ParametrosExamen_idExamen, Calificacion, NumReactivos) VALUES 
                                                 (:carrera, :procedencia, :param_exam, :calificacion, :numReactivos)");
 

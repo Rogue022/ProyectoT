@@ -12,11 +12,11 @@ var display5 = 0;
 
 function mostrar1() {
     if (display1 == 1) {
-        div1.style.display = 'block';
+        div1.style.display = 'none';
         display1 = 0;
     }
     else {
-        div1.style.display = 'none';
+        div1.style.display = 'block';
         display1 = 1;
     }
 }
@@ -24,22 +24,22 @@ function mostrar1() {
 
 function mostrar2() {
     if (display2 == 1) {
-        div2.style.display = 'block';
+        div2.style.display = 'none';
         display2 = 0;
     }
     else {
-        div2.style.display = 'none';
+        div2.style.display = 'block';
         display2 = 1;
     }
 }
 
 function mostrar3() {
     if (display3 == 1) {
-        div3.style.display = 'block';
+        div3.style.display = 'none';
         display3 = 0;
     }
     else {
-        div3.style.display = 'none';
+        div3.style.display = 'block';
         display3 = 1;
     }
 }
@@ -47,11 +47,11 @@ function mostrar3() {
 
 function mostrar4() {
     if (display4 == 1) {
-        div4.style.display = 'block';
+        div4.style.display = 'none';
         display4 = 0;
     }
     else {
-        div4.style.display = 'none';
+        div4.style.display = 'block';
         display4 = 1;
     }
 }
@@ -59,11 +59,11 @@ function mostrar4() {
 
 function mostrar5() {
     if (display5 == 1) {
-        div5.style.display = 'block';
+        div5.style.display = 'none';
         display5 = 0;
     }
     else {
-        div5.style.display = 'none';
+        div5.style.display = 'block';
         display5 = 1;
     }
 }

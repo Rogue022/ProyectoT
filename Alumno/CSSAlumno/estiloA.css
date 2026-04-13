@@ -58,13 +58,6 @@ body{
     border-radius: 10px;
 }
 
-
-.main_r{
-    background-color: beige;
-    padding: 10px;
-    margin: 20px 0px;
-}
-
 .boton_container{
     padding: 10px;
     margin: 20px 0px;
@@ -73,6 +66,24 @@ body{
 }
 
 /***** End Preguntas examen *****/
+
+/***** Respuestas *****/  
+
+
+.main_r{
+    background-color: beige;
+    padding: 10px;
+    margin: 20px 0px;
+    display: none;
+
+}
+
+
+
+
+/***** End Respuestas *****/
+
+
 
 .main-container{
     grid-area: main;

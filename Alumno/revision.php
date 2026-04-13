@@ -6,6 +6,7 @@ session_start();
 
 include_once(__DIR__ . '/../Control_Login/class.Login.php');
 
+
 $alumno = new Usuario();
 
 if (isset($_SESSION['usuario'])) {
@@ -15,6 +16,7 @@ if (isset($_SESSION['usuario'])) {
     header("Location: ../index.php?expired=1");
     exit;
 }
+
 
 ?>
 
@@ -44,62 +46,63 @@ if (isset($_SESSION['usuario'])) {
 
     <main>
         <br>
-        <h4>Revisa tus preguntas haciendo click en mostrar respuesta. </h4>
+        <h2>Examen tipo: </h2> 
+        <h4>Revisa tus respuestas haciendo click en mostrar procedimiento. </h4>
 
         <!-- Container -->
 
         <div class="container">
             <div class="row">
                 <div class="row main_q">
-                    <h5>Pregunta 1</h5>
+                    <h5>1. Pregunta</h5>
                 </div>
                 <div id="pregunta1" class="main_r"> Respuesta 1</div>
                 <div class="column">
-                    <button class="btn btn-info" onclick="mostrar1()">Mostrar Respuesta 1</button>
+                    <button class="btn btn-info" onclick="mostrar1()">Mostrar/Ocultar</button>
                 </div>
                 <div class="column"></div>
             </div>
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>Pregunta 2</h5>
+                    <h5>2. Pregunta </h5>
                 </div>
                 <div id="pregunta2" class="main_r"> Respuesta 2</div>
                 <div class="column">
-                    <button class="btn btn-info" onclick="mostrar2()">Mostrar Respuesta 2</button>
+                    <button class="btn btn-info" onclick="mostrar2()">Mostrar/Ocultar</button>
                 </div>
                 <div class="column"></div>
             </div>
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>Pregunta 3</h5>
+                    <h5>3. Pregunta</h5>
                 </div>
                 <div id="pregunta3" class="main_r"> Respuesta 3</div>
                 <div class="column">
-                    <button class="btn btn-info" onclick="mostrar3()">Mostrar Respuesta 3</button>
+                    <button class="btn btn-info" onclick="mostrar3()">Mostrar/Ocultar</button>
                 </div>
                 <div class="column"></div>
             </div>
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>Pregunta 4</h5>
+                    <h5>4. Pregunta</h5>
                 </div>
-                <div id="pregunta4" class="main_r"> Respuesta 4</div>
+                <div id="pregunta4" class="main_r"> Respuesta 4 </div>
                 <div class="column">
-                    <button class="btn btn-info" onclick="mostrar4()">Mostrar Respuesta 4</button>
+                    <button class="btn btn-info" onclick="mostrar4()">Mostrar/Ocultar</button>
                 </div>
                 <div class="column"></div>
             </div>
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>Pregunta 5</h5>
+                    <h5>5. Pregunta</h5>
                 </div>
-                <div id="pregunta5" class="main_r"> Respuesta 5</div>
+                <div id="pregunta5" class="main_r"> 5. Pregunta</div>
                 <div class="column">
-                    <button class="btn btn-info" onclick="mostrar5()">Mostrar Respuesta 5</button>
+                    <button class="btn btn-info" onclick="mostrar5()">Mostrar/Ocultar</button>
                 </div>
                 <div class="column"></div>
             </div>
