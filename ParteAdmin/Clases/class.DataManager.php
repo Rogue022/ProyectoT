@@ -143,4 +143,21 @@ class DataManager
             echo $E;
         }
     }
+
+
+    //recuperar preguntas del examen para visualización
+    
+    public static function _getPreguntas(){
+
+        self::iniciaConexion();
+
+        try {
+            //recuperar pregunta. 
+
+            
+        } catch (PDOException $e) {
+            echo $e;
+        }
+
+    }
 }

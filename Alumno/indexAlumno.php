@@ -98,6 +98,9 @@ if(isset($_SESSION['usuario'])){
         <script>
             const dialog = document.getElementById('modal');
             const btnOpen = document.getElementById('openDialog');
+            
+            
+            
             const btnClose = document.getElementById('closeDialog');
             const btnEnd = document.getElementById('endDialog');
 
