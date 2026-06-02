@@ -11,6 +11,7 @@ ParteAdmin/Uploads/
 # ====== Composer ======
 composer.phar
 composer.lock
+composer.json
 
 # ====== IDE / SO =====
 .vscode/
