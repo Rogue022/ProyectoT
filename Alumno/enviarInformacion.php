@@ -4,9 +4,11 @@ error_reporting(E_ALL);
 
 session_start();
 
-
+//agregar accionEnvio.php
 
 ?>
+
+
 <!DOCTYPE html>
 <!-- en caso de:  <html lang="en" data-bs-theme="dark">  -->
 <html lang="es">
@@ -36,7 +38,7 @@ session_start();
             <div class="row">
                 <h6>2. Ingresa un correo electrónico para enviar esta información.</h6>
             </div>
-            <form action="">
+            <form id="enviarInformacion" method="POST">
                 <div class="row needs-validation">
                     <div class="col-sm">
                         <div class="main-cards">
@@ -62,7 +64,7 @@ session_start();
                     <div class="col-sm">
                         <label for="correo-e">Ingresa tu correo electrónico:</label>
                         <br>
-                        <input type="email" value="" id="correo-e" required>
+                        <input type="email" id="correo-e" value="john@ejemplo.com" name="correo-e" required>
                         <br>
                         <div class="invalid-feedback">
                             Ingresa un correo válido
@@ -75,7 +77,7 @@ session_start();
                                     Regresar
                                 </button>
 
-
+                                <!-- ========== Start Modal ========== -->
                                 <dialog id="modal" class="dialog">
                                     <h5>Confirmación</h5>
                                     <p>¿Enviar correo?</p>
@@ -83,11 +85,13 @@ session_start();
                                     <button type="button" class="btn btn-warning" id="endDialog">Finalizar</button>
                                 </dialog>
 
-                                <button type="submit" class="btn btn-success" id="enviarInfo">
-                                    Enviar
+                                <!-- ========== End Modal ========== -->
+
+                                <button type="submit" value="submit" class="btn btn-success" id="enviarInfo">
+                                    Enviar correo
                                 </button>
 
-                                
+
 
                             </div>
                         </div>
@@ -100,14 +104,37 @@ session_start();
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
         const dialog = document.getElementById('modal');
         const btnEnv = document.getElementById('enviarInfo');
 
-        btnEnv.addEventListener('click', e => {
-                dialog.showModal();
-            });
+        //Para mostrar el modal:
+        /*
+                btnEnv.addEventListener('click', e => {
+                        dialog.showModal();
+                    });
+        */
+        document.getElementById('enviarInformacion').addEventListener("submit", function(event) {
+        event.preventDefault();
 
+        const datosForm = new FormData(this);
+
+        fetch('/Alumno/ClasesAlumno/accionEnvio.php', {
+                method: 'POST',
+                body: datosForm
+            })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                alert("Elemento enviado");
+            
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
+
+    });
     </script>
 
 
