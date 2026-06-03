@@ -12,6 +12,7 @@ require '/srv/PrTitulacion/ProyectoT/vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 $datos = $_POST;
+$datenv = parse_ini_file('.env');
 
 $correo=$datos['correo-e'];
 
@@ -21,8 +22,8 @@ try {
     $mail->isSMTP();    
     $mail->Host='smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'n';
-    $mail->Password = '';
+    $mail->Username = $datenv['M_USER'];
+    $mail->Password = $datenv['M_PWD'];
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
     $mail->CharSet = 'UTF-8';
