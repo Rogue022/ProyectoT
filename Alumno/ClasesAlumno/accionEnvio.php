@@ -21,8 +21,8 @@ try {
     $mail->isSMTP();    
     $mail->Host='smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'noreply.examenespropedeuticos@gmail.com';
-    $mail->Password = 'rdgw vrjx twil fpcb';
+    $mail->Username = 'n';
+    $mail->Password = '';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = 465;
     $mail->CharSet = 'UTF-8';
