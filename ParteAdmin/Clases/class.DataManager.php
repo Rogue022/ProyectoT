@@ -13,6 +13,7 @@ class DataManager
             $dotenv = parse_ini_file('.env'); //elementos ocultos por seguridad
             try {
                 //se envían los elementos de inicio se sesión a la db
+                
                 self::$conexionDB = new PDO(
                     "mysql:host={$dotenv['DB_HOST']};dbname={$dotenv['DB_NAME']}",
                     $dotenv['DB_USER'],
@@ -20,7 +21,9 @@ class DataManager
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
                 );
-                //echo "<br>Conectadx<br>";
+
+                
+                
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
                 die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
             }
@@ -149,11 +152,12 @@ class DataManager
     
     public static function _getPreguntas(){
 
-        self::iniciaConexion();
+    self::muestraConexion();
+
 
         try {
             //recuperar pregunta. 
-
+            echo "Holo, estoy en datamanager";
             
         } catch (PDOException $e) {
             echo $e;
