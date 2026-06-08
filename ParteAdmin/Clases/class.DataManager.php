@@ -150,17 +150,21 @@ class DataManager
 
     //recuperar preguntas del examen para visualización
     
-    public static function _getPreguntas(){
+    public static function _getPregunta(){
 
-    self::muestraConexion();
+    self::iniciaConexion();
 
 
         try {
-            //recuperar pregunta. 
-            echo "Holo, estoy en datamanager";
+            $stmt = self::$conexionDB->query("SELECT * FROM Pregunta");
+            
+            $expresiones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $expresiones;
+
             
         } catch (PDOException $e) {
-            echo $e;
+            echo "Error: ".$e;
         }
 
     }
