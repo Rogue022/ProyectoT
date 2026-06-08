@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5>1. Pregunta</h5>
                 </div>
-                <div id="pregunta1" class="main_r"> Respuesta 1</div>
+                <div id="pregunta1" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar1()">Mostrar/Ocultar</button>
                 </div>
@@ -121,7 +121,7 @@ if (isset($_SESSION['usuario'])) {
     
 
     <!-- Scripting -->
-    <script src="Scripts/scriptPreguntas.js"></script>
+    <script type="text/javascript" src="Scripts/scriptPreguntas.js"> </script>
 
 
 </body>

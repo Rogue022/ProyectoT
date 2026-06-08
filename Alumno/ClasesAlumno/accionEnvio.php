@@ -12,7 +12,7 @@ require '/srv/PrTitulacion/ProyectoT/vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 $datos = $_POST;
-$datenv = parse_ini_file('.env');
+$datenv = parse_ini_file('../../ParteAdmin/Clases/.env');
 
 $correo=$datos['correo-e'];
 

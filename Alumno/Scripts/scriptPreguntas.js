@@ -1,4 +1,4 @@
-var div1 = document.getElementById('pregunta1');
+var pregunta1 = document.getElementById('pregunta1');
 var div2 = document.getElementById('pregunta2');
 var div3 = document.getElementById('pregunta3');
 var div4 = document.getElementById('pregunta4');
@@ -11,16 +11,34 @@ var display5 = 0;
 
 
 function mostrar1() {
-    if (display1 == 1) {
-        div1.style.display = 'none';
-        display1 = 0;
+    if (display2 == 1) {
+        pregunta1.style.display = 'none';
+        display2 = 0;
     }
     else {
-        div1.style.display = 'block';
-        display1 = 1;
+        pregunta1.style.display = 'block';
+        display2 = 1;
+
+        const pregunta = 1;
+
+        fetch('/Alumno/ClasesAlumno/prueba.php', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify(pregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                pregunta1.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
+
     }
 }
-
 
 function mostrar2() {
     if (display2 == 1) {
@@ -68,7 +86,7 @@ function mostrar5() {
     }
 }
 
-function regresar(){
+function regresar() {
     window.history.back();
 }
 

@@ -64,7 +64,7 @@ session_start();
                     <div class="col-sm">
                         <label for="correo-e">Ingresa tu correo electrónico:</label>
                         <br>
-                        <input type="email" id="correo-e" value="john@ejemplo.com" name="correo-e" required>
+                        <input type="email" id="correo-e" value="" name="correo-e" required>
                         <br>
                         <div class="invalid-feedback">
                             Ingresa un correo válido
