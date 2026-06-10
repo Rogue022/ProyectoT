@@ -46,7 +46,7 @@ if (isset($_SESSION['usuario'])) {
 
     <main>
         <br>
-        <h2>Examen tipo: </h2> 
+        <h2>Examen: </h2> 
         <h4>Revisa tus respuestas haciendo click en mostrar procedimiento. </h4>
 
         <!-- Container -->
@@ -54,9 +54,9 @@ if (isset($_SESSION['usuario'])) {
         <div class="container">
             <div class="row">
                 <div class="row main_q">
-                    <h5>1. Pregunta</h5>
+                    <h5 id="pregunta1"> </h5>
                 </div>
-                <div id="pregunta1" class="main_r"> </div>
+                <div id="respuesta1" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar1()">Mostrar/Ocultar</button>
                 </div>
@@ -65,9 +65,9 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>2. Pregunta </h5>
+                    <h5 id="pregunta2"> </h5>
                 </div>
-                <div id="pregunta2" class="main_r"> Respuesta 2</div>
+                <div id="respuesta2" class="main_r"></div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar2()">Mostrar/Ocultar</button>
                 </div>
@@ -76,9 +76,9 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>3. Pregunta</h5>
+                    <h5 id="pregunta3"> </h5>
                 </div>
-                <div id="pregunta3" class="main_r"> Respuesta 3</div>
+                <div id="respuesta3" class="main_r"> Respuesta 3</div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar3()">Mostrar/Ocultar</button>
                 </div>
@@ -87,9 +87,9 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>4. Pregunta</h5>
+                    <h5 id="pregunta4"> </h5>
                 </div>
-                <div id="pregunta4" class="main_r"> Respuesta 4 </div>
+                <div id="respuesta4" class="main_r"> Respuesta 4 </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar4()">Mostrar/Ocultar</button>
                 </div>
@@ -98,9 +98,9 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="row">
                 <div class="row main_q">
-                    <h5>5. Pregunta</h5>
+                    <h5 id="pregunta5"> </h5>
                 </div>
-                <div id="pregunta5" class="main_r"> 5. Pregunta</div>
+                <div id="respuesta5" class="main_r"> 5. respuesta</div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar5()">Mostrar/Ocultar</button>
                 </div>
@@ -121,7 +121,11 @@ if (isset($_SESSION['usuario'])) {
     
 
     <!-- Scripting -->
-    <script type="text/javascript" src="Scripts/scriptPreguntas.js"> </script>
+    <script type="text/javascript" src="Scripts/scriptPreguntas.js"> 
+            
+            
+
+    </script>
 
 
 </body>

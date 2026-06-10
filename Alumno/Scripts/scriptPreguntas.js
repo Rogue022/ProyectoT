@@ -1,8 +1,8 @@
-var pregunta1 = document.getElementById('pregunta1');
-var div2 = document.getElementById('pregunta2');
-var div3 = document.getElementById('pregunta3');
-var div4 = document.getElementById('pregunta4');
-var div5 = document.getElementById('pregunta5');
+var respuesta1 = document.getElementById('respuesta1');
+var respuesta2 = document.getElementById('respuesta2');
+var respuesta3 = document.getElementById('respuesta3');
+var respuesta4 = document.getElementById('respuesta4');
+var respuesta5 = document.getElementById('respuesta5');
 var display1 = 0;
 var display2 = 0;
 var display3 = 0;
@@ -10,83 +10,195 @@ var display4 = 0;
 var display5 = 0;
 
 
-function mostrar1() {
-    if (display2 == 1) {
-        pregunta1.style.display = 'none';
-        display2 = 0;
-    }
-    else {
-        pregunta1.style.display = 'block';
-        display2 = 1;
+/*Mostrar preguntas llamando a la función*/
+llamarPreguntas();
 
-        const pregunta = 1;
+function llamarPreguntas() {
 
-        fetch('/Alumno/ClasesAlumno/prueba.php', {
+    var pregunta1 = document.getElementById('pregunta1');
+    var pregunta2 = document.getElementById('pregunta2');
+    var pregunta3 = document.getElementById('pregunta3');
+    var pregunta4 = document.getElementById('pregunta4');
+    var pregunta5 = document.getElementById('pregunta5');
+
+    
+    recuperarPregunta(1,pregunta1);
+    recuperarPregunta(2,pregunta2);
+    recuperarPregunta(3,pregunta3);
+    recuperarPregunta(6,pregunta4);
+    recuperarPregunta(7,pregunta5);
+    
+}
+
+
+function recuperarPregunta(numPregunta, varPregunta) {
+
+        fetch('/Alumno/ClasesAlumno/preguntas.php', {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(pregunta)
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
         })
             .then(respuesta => {
                 return respuesta.text();
             })
             .then(contenido => {
-                pregunta1.innerHTML = contenido;
+                varPregunta.innerHTML = contenido;
 
             })
             .catch(error => {
                 console.error('Error al enviar los datos', error);
             })
+    }
 
+/* Mostrar respuestas.... acción del click*/
+
+
+function mostrar1() {
+    if (display1 == 1) {
+        respuesta1.style.display = 'none';
+        display1 = 0;
+    }
+    else {
+        respuesta1.style.display = 'block';
+        display1 = 1;
+
+        const numPregunta = 1;
+
+        fetch('/Alumno/ClasesAlumno/respuestas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                respuesta1.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
     }
 }
 
 function mostrar2() {
+
     if (display2 == 1) {
-        div2.style.display = 'none';
+        respuesta2.style.display = 'none';
         display2 = 0;
     }
     else {
-        div2.style.display = 'block';
+        respuesta2.style.display = 'block';
         display2 = 1;
+
+        const numPregunta = 2;
+
+        fetch('/Alumno/ClasesAlumno/respuestas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                respuesta2.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
     }
 }
 
 function mostrar3() {
     if (display3 == 1) {
-        div3.style.display = 'none';
+        respuesta3.style.display = 'none';
         display3 = 0;
     }
     else {
-        div3.style.display = 'block';
+        respuesta3.style.display = 'block';
         display3 = 1;
+
+        const numPregunta = 3;
+
+        fetch('/Alumno/ClasesAlumno/respuestas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                respuesta3.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
     }
 }
-
 
 function mostrar4() {
     if (display4 == 1) {
-        div4.style.display = 'none';
+        respuesta4.style.display = 'none';
         display4 = 0;
     }
     else {
-        div4.style.display = 'block';
+        respuesta4.style.display = 'block';
         display4 = 1;
+
+        const numPregunta = 6;
+
+        fetch('/Alumno/ClasesAlumno/respuestas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                respuesta4.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
     }
 }
 
-
 function mostrar5() {
     if (display5 == 1) {
-        div5.style.display = 'none';
+        respuesta5.style.display = 'none';
         display5 = 0;
     }
     else {
-        div5.style.display = 'block';
+        respuesta5.style.display = 'block';
         display5 = 1;
+
+        const numPregunta = 7;
+
+        fetch('/Alumno/ClasesAlumno/respuestas.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(numPregunta)
+        })
+            .then(respuesta => {
+                return respuesta.text();
+            })
+            .then(contenido => {
+                respuesta5.innerHTML = contenido;
+
+            })
+            .catch(error => {
+                console.error('Error al enviar los datos', error);
+            })
     }
 }
 
 function regresar() {
     window.history.back();
 }
-
