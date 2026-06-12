@@ -1,3 +1,9 @@
+var varExamen = document.getElementById('numExamen');
+var pregunta1 = document.getElementById('pregunta1');
+var pregunta2 = document.getElementById('pregunta2');
+var pregunta3 = document.getElementById('pregunta3');
+var pregunta4 = document.getElementById('pregunta4');
+var pregunta5 = document.getElementById('pregunta5');
 var respuesta1 = document.getElementById('respuesta1');
 var respuesta2 = document.getElementById('respuesta2');
 var respuesta3 = document.getElementById('respuesta3');
@@ -8,50 +14,85 @@ var display2 = 0;
 var display3 = 0;
 var display4 = 0;
 var display5 = 0;
+varExamen.dataset.numero = 2;
+pregunta1.dataset.numero = 1;
+pregunta2.dataset.numero = 2;
+pregunta3.dataset.numero = 3;
+pregunta4.dataset.numero = 4;
+pregunta5.dataset.numero = 5;
 
 
 /*Mostrar preguntas llamando a la función*/
 llamarPreguntas();
+recuperaNumExamen(varExamen.dataset.numero, varExamen);
+
+function recuperaNumExamen(numeroEx, varExamen){
+
+    fetch('/Alumno/ClasesAlumno/examen.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(numeroEx)
+    })
+        .then(respuesta => {
+            return respuesta.text();
+        })
+        .then(contenido => {
+            varExamen.innerHTML = contenido;
+
+        })
+        .catch(error => {
+            console.error('Error al enviar los datos', error);
+        })
+}
 
 function llamarPreguntas() {
 
-    var pregunta1 = document.getElementById('pregunta1');
-    var pregunta2 = document.getElementById('pregunta2');
-    var pregunta3 = document.getElementById('pregunta3');
-    var pregunta4 = document.getElementById('pregunta4');
-    var pregunta5 = document.getElementById('pregunta5');
+    recuperarPregunta(pregunta1.dataset.numero, pregunta1);
+    recuperarPregunta(pregunta2.dataset.numero, pregunta2);
+    recuperarPregunta(pregunta3.dataset.numero, pregunta3);
+    recuperarPregunta(pregunta4.dataset.numero, pregunta4);
+    recuperarPregunta(pregunta5.dataset.numero, pregunta5);
 
-    
-    recuperarPregunta(1,pregunta1);
-    recuperarPregunta(2,pregunta2);
-    recuperarPregunta(3,pregunta3);
-    recuperarPregunta(6,pregunta4);
-    recuperarPregunta(7,pregunta5);
-    
 }
-
 
 function recuperarPregunta(numPregunta, varPregunta) {
 
-        fetch('/Alumno/ClasesAlumno/preguntas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
+    fetch('/Alumno/ClasesAlumno/preguntas.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(numPregunta)
+    })
+        .then(respuesta => {
+            return respuesta.text();
         })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                varPregunta.innerHTML = contenido;
+        .then(contenido => {
+            varPregunta.innerHTML = contenido;
 
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
-    }
+        })
+        .catch(error => {
+            console.error('Error al enviar los datos', error);
+        })
+}
 
 /* Mostrar respuestas.... acción del click*/
+function recuperarRespuesta(numPregunta, varRespuesta) {
 
+    fetch('/Alumno/ClasesAlumno/respuestas.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(numPregunta)
+    })
+        .then(respuesta => {
+            return respuesta.text();
+        })
+        .then(contenido => {
+            varRespuesta.innerHTML = contenido;
+
+        })
+        .catch(error => {
+            console.error('Error al enviar los datos', error);
+        })
+}
 
 function mostrar1() {
     if (display1 == 1) {
@@ -61,24 +102,7 @@ function mostrar1() {
     else {
         respuesta1.style.display = 'block';
         display1 = 1;
-
-        const numPregunta = 1;
-
-        fetch('/Alumno/ClasesAlumno/respuestas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
-        })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                respuesta1.innerHTML = contenido;
-
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
+        recuperarRespuesta(pregunta1.dataset.numero, respuesta1);
     }
 }
 
@@ -91,24 +115,7 @@ function mostrar2() {
     else {
         respuesta2.style.display = 'block';
         display2 = 1;
-
-        const numPregunta = 2;
-
-        fetch('/Alumno/ClasesAlumno/respuestas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
-        })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                respuesta2.innerHTML = contenido;
-
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
+        recuperarRespuesta(pregunta2.dataset.numero, respuesta2);
     }
 }
 
@@ -120,24 +127,7 @@ function mostrar3() {
     else {
         respuesta3.style.display = 'block';
         display3 = 1;
-
-        const numPregunta = 3;
-
-        fetch('/Alumno/ClasesAlumno/respuestas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
-        })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                respuesta3.innerHTML = contenido;
-
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
+        recuperarRespuesta(pregunta3.dataset.numero, respuesta3);
     }
 }
 
@@ -149,24 +139,7 @@ function mostrar4() {
     else {
         respuesta4.style.display = 'block';
         display4 = 1;
-
-        const numPregunta = 6;
-
-        fetch('/Alumno/ClasesAlumno/respuestas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
-        })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                respuesta4.innerHTML = contenido;
-
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
+        recuperarRespuesta(pregunta4.dataset.numero, respuesta4);
     }
 }
 
@@ -178,24 +151,7 @@ function mostrar5() {
     else {
         respuesta5.style.display = 'block';
         display5 = 1;
-
-        const numPregunta = 7;
-
-        fetch('/Alumno/ClasesAlumno/respuestas.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(numPregunta)
-        })
-            .then(respuesta => {
-                return respuesta.text();
-            })
-            .then(contenido => {
-                respuesta5.innerHTML = contenido;
-
-            })
-            .catch(error => {
-                console.error('Error al enviar los datos', error);
-            })
+        recuperarRespuesta(pregunta5.dataset.numero, respuesta5);
     }
 }
 

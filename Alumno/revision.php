@@ -46,15 +46,17 @@ if (isset($_SESSION['usuario'])) {
 
     <main>
         <br>
-        <h2>Examen: </h2> 
-        <h4>Revisa tus respuestas haciendo click en mostrar procedimiento. </h4>
+        <h2 id="numExamen">Examen: </h2> 
+        <h4>Revisa tus respuestas haciendo click en mostrar u ocultar. </h4>
 
         <!-- Container -->
 
         <div class="container">
             <div class="row">
                 <div class="row main_q">
-                    <h5 id="pregunta1"> </h5>
+
+                    <h5 id="pregunta1"></h5>
+
                 </div>
                 <div id="respuesta1" class="main_r"> </div>
                 <div class="column">

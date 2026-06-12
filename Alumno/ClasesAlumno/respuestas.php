@@ -8,8 +8,8 @@ count($preguntas);
 $i = 0;
 
 while ($i < count($preguntas)) {
-    if ($preguntas[$i]['idPregunta'] == $numPregunta) {
-        echo "Respuesta ". $preguntas[$i]['idPregunta'] . " <br> " . $preguntas[$i]['Expresion'] . "<br>";
+    if ($preguntas[$i]['NumPregunta'] == $numPregunta) {
+        echo "Respuesta ". $preguntas[$i]['NumPregunta'] . " <br> " . $preguntas[$i]['Expresion'] . "<br>";
     }
     $i++;
 }
