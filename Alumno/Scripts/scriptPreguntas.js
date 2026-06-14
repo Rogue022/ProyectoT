@@ -14,7 +14,10 @@ var display2 = 0;
 var display3 = 0;
 var display4 = 0;
 var display5 = 0;
+
 varExamen.dataset.numero = 2;
+
+
 pregunta1.dataset.numero = 1;
 pregunta2.dataset.numero = 2;
 pregunta3.dataset.numero = 3;
@@ -26,7 +29,7 @@ pregunta5.dataset.numero = 5;
 llamarPreguntas();
 recuperaNumExamen(varExamen.dataset.numero, varExamen);
 
-function recuperaNumExamen(numeroEx, varExamen){
+function recuperaNumExamen(numeroEx, varExamen) {
 
     fetch('/Alumno/ClasesAlumno/examen.php', {
         method: 'POST',
@@ -87,6 +90,13 @@ function recuperarRespuesta(numPregunta, varRespuesta) {
         })
         .then(contenido => {
             varRespuesta.innerHTML = contenido;
+
+            renderMathInElement(varRespuesta, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false }
+                ]
+            });
 
         })
         .catch(error => {

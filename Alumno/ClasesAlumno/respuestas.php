@@ -2,7 +2,9 @@
 include_once(__DIR__ . '/../../ParteAdmin/Clases/class.DataManager.php');
 $numPregunta = json_decode(file_get_contents('php://input'), true);
 $llamadoDM = new DataManager;
-$preguntas = $llamadoDM->_getPregunta();
+$getNumExamen = $llamadoDM->_getExamen();
+$numExamen=$getNumExamen['idExamen'];
+$preguntas = $llamadoDM->_getPregunta($numExamen);
 count($preguntas);
 
 $i = 0;

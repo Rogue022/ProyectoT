@@ -6,6 +6,7 @@ class DataManager
 {
     private static $conexionDB = null; //nombre común a una instancia de PHP que es estática para que no se vuelva a crear cuando se vuelva a llamar
 
+
     public static function iniciaConexion(): PDO
     {
         if (self::$conexionDB === NULL) //si no está instanciada, se crea la conexión a la BD
@@ -147,25 +148,51 @@ class DataManager
         }
     }
 
+    public static function _getExamen(){
+
+        self::iniciaConexion();
+
+        try {
+
+            $declaracion = self::$conexionDB->query("SELECT idExamen, nomExamen FROM ParametrosExamen WHERE EstatusEx = 'ACTIVO'");
+            $examen = $declaracion->fetch(PDO::FETCH_ASSOC);
+
+            //Te imprime el nombre del examen
+            //echo "Examen: ".$examen['nomExamen'];
+
+
+            //regresa numero de examen
+            return $examen;
+            
+        } catch (PDOException $e) {
+            echo "Error al recuperar examen: ".$e;
+        }
+
+
+    }
+
+
 
     //recuperar preguntas del examen para visualización
     
-    public static function _getPregunta(){
-
+    public static function _getPregunta($numeroExamen){
+    
     self::iniciaConexion();
-
-
+    
         try {
-            $stmt = self::$conexionDB->query("SELECT * FROM Pregunta");
-            
-            $expresiones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //como voy a ocupar una variable, hago el query con prepare 
+            $declaracion = self::$conexionDB->prepare("SELECT * FROM Pregunta WHERE PreguntaExamen_idExamen = :num");
 
-            return $expresiones;
+            $declaracion->execute([
+                ':num' => $numeroExamen
+            ]);
 
-            
+            return $declaracion->fetchAll(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             echo "Error: ".$e;
         }
-
     }
+
+    
 }

@@ -32,6 +32,19 @@ if (isset($_SESSION['usuario'])) {
     <!-- Hoja de estilos -->
     <link rel="stylesheet" href="/Alumno/CSSAlumno/estiloA.css">
 
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+    <script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js">
+    </script>
+
+    <script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);">
+    </script>
+
+
 </head>
 
 <body>
@@ -46,7 +59,7 @@ if (isset($_SESSION['usuario'])) {
 
     <main>
         <br>
-        <h2 id="numExamen">Examen: </h2> 
+        <h2 id="numExamen">Examen: </h2>
         <h4>Revisa tus respuestas haciendo click en mostrar u ocultar. </h4>
 
         <!-- Container -->
@@ -54,11 +67,9 @@ if (isset($_SESSION['usuario'])) {
         <div class="container">
             <div class="row">
                 <div class="row main_q">
-
                     <h5 id="pregunta1"></h5>
-
                 </div>
-                <div id="respuesta1" class="main_r"> </div>
+                <div id="respuesta1" class="main_r"> Respuesta 1 </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar1()">Mostrar/Ocultar</button>
                 </div>
@@ -69,7 +80,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta2"> </h5>
                 </div>
-                <div id="respuesta2" class="main_r"></div>
+                <div id="respuesta2" class="main_r">Respuesta 2 </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar2()">Mostrar/Ocultar</button>
                 </div>
@@ -110,22 +121,22 @@ if (isset($_SESSION['usuario'])) {
             </div>
         </div>
 
-    <div class="boton_container">
-        <div class="row">
-            <div class="column">
-                <button id="btnRegresar" class="btn btn-success" onclick="regresar()">Regresar</button>
+        <div class="boton_container">
+            <div class="row">
+                <div class="column">
+                    <button id="btnRegresar" class="btn btn-success" onclick="regresar()">Regresar</button>
+                </div>
             </div>
         </div>
-    </div>
 
     </main>
 
-    
+
 
     <!-- Scripting -->
-    <script type="text/javascript" src="Scripts/scriptPreguntas.js"> 
-            
-            
+    <script defer type="text/javascript" src="Scripts/scriptPreguntas.js">
+
+
 
     </script>
 
