@@ -21,7 +21,7 @@
                         <div class="col-6 text-start">
                             <p class="mb-0">
                                 <a href="#" class="text-muted">
-                                    <strong>© 2025</strong>
+                                    <strong>© 2026</strong>
                                 </a>
                             </p>
                         </div>

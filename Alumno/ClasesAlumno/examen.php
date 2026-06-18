@@ -5,4 +5,11 @@ $llamadoDM = new DataManager;
 $examen = $llamadoDM->_getExamen();
 //$cuenta = count($examen);
 
-echo "Examen: ".$examen['nomExamen'];
+if ($examen['nomExamen'] != NULL ) {
+    echo "Examen: ".$examen['nomExamen'];
+} else {
+    echo "No hay examen activo. Contacte al administrador.";
+}
+
+
+

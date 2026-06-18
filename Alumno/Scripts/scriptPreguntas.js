@@ -14,10 +14,7 @@ var display2 = 0;
 var display3 = 0;
 var display4 = 0;
 var display5 = 0;
-
 varExamen.dataset.numero = 2;
-
-
 pregunta1.dataset.numero = 1;
 pregunta2.dataset.numero = 2;
 pregunta3.dataset.numero = 3;

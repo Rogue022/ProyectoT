@@ -60,7 +60,7 @@ if (isset($_SESSION['usuario'])) {
     <main>
         <br>
         <h2 id="numExamen">Examen: </h2>
-        <h4>Revisa tus respuestas haciendo click en mostrar u ocultar. </h4>
+        <h4>Revisa las respuestas haciendo click en mostrar u ocultar. </h4>
 
         <!-- Container -->
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta1"></h5>
                 </div>
-                <div id="respuesta1" class="main_r"> Respuesta 1 </div>
+                <div id="respuesta1" class="main_r">  </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar1()">Mostrar/Ocultar</button>
                 </div>
@@ -80,7 +80,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta2"> </h5>
                 </div>
-                <div id="respuesta2" class="main_r">Respuesta 2 </div>
+                <div id="respuesta2" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar2()">Mostrar/Ocultar</button>
                 </div>
@@ -91,7 +91,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta3"> </h5>
                 </div>
-                <div id="respuesta3" class="main_r"> Respuesta 3</div>
+                <div id="respuesta3" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar3()">Mostrar/Ocultar</button>
                 </div>
@@ -102,7 +102,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta4"> </h5>
                 </div>
-                <div id="respuesta4" class="main_r"> Respuesta 4 </div>
+                <div id="respuesta4" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar4()">Mostrar/Ocultar</button>
                 </div>
@@ -113,7 +113,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="row main_q">
                     <h5 id="pregunta5"> </h5>
                 </div>
-                <div id="respuesta5" class="main_r"> 5. respuesta</div>
+                <div id="respuesta5" class="main_r"> </div>
                 <div class="column">
                     <button class="btn btn-info" onclick="mostrar5()">Mostrar/Ocultar</button>
                 </div>
