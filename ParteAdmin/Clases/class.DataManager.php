@@ -156,12 +156,7 @@ class DataManager
 
             $declaracion = self::$conexionDB->query("SELECT idExamen, nomExamen FROM ParametrosExamen WHERE EstatusEx = 'ACTIVO'");
             $examen = $declaracion->fetch(PDO::FETCH_ASSOC);
-
-            //Te imprime el nombre del examen
-            //echo "Examen: ".$examen['nomExamen'];
-
-
-            //regresa numero de examen
+            
             return $examen;
             
         } catch (PDOException $e) {
@@ -181,6 +176,7 @@ class DataManager
     
         try {
         //como voy a ocupar una variable, hago el query con prepare 
+
             $declaracion = self::$conexionDB->prepare("SELECT * FROM Pregunta WHERE PreguntaExamen_idExamen = :num");
 
             $declaracion->execute([
