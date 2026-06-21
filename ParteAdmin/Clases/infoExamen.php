@@ -11,7 +11,7 @@ $examen = $llamadoDM->_getExamen();
 if ($examen == FALSE) {
     echo "Examen Activo: Ninguno ";    
 } else {
-    echo "Examen activo: ". $examen['nomExamen']. "<br> ID: ". $examen['idExamen'];
+    echo "Examen activo: ". $examen['nomExamen']. " -- ID: ". $examen['idExamen'];
 }
 
 ?>

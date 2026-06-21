@@ -14,7 +14,7 @@ class DataManager
             $dotenv = parse_ini_file('.env'); //elementos ocultos por seguridad
             try {
                 //se envían los elementos de inicio se sesión a la db
-                
+
                 self::$conexionDB = new PDO(
                     "mysql:host={$dotenv['DB_HOST']};dbname={$dotenv['DB_NAME']}",
                     $dotenv['DB_USER'],
@@ -22,9 +22,6 @@ class DataManager
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
                 );
-
-                
-                
             } catch (PDOException $e) { //manejo de excepciones para la conexión a la base de datos
                 die("Error de conexión: " . $e->getMessage()); //mensajes ya prediseñados
             }
@@ -148,7 +145,8 @@ class DataManager
         }
     }
 
-    public static function _getExamen(){
+    public static function _getExamen()
+    {
 
         self::iniciaConexion();
 
@@ -156,26 +154,24 @@ class DataManager
 
             $declaracion = self::$conexionDB->query("SELECT idExamen, nomExamen FROM ParametrosExamen WHERE EstatusEx = 'ACTIVO'");
             $examen = $declaracion->fetch(PDO::FETCH_ASSOC);
-            
+
             return $examen;
-            
         } catch (PDOException $e) {
-            echo "Error al recuperar examen: ".$e;
+            echo "Error al recuperar examen: " . $e;
         }
-
-
     }
 
 
 
     //recuperar preguntas del examen para visualización
-    
-    public static function _getPregunta($numeroExamen){
-    
-    self::iniciaConexion();
-    
+
+    public static function _getPregunta($numeroExamen)
+    {
+
+        self::iniciaConexion();
+
         try {
-        //como voy a ocupar una variable, hago el query con prepare 
+            //como voy a ocupar una variable, hago el query con prepare 
 
             $declaracion = self::$conexionDB->prepare("SELECT * FROM Pregunta WHERE PreguntaExamen_idExamen = :num");
 
@@ -184,11 +180,45 @@ class DataManager
             ]);
 
             return $declaracion->fetchAll(PDO::FETCH_ASSOC);
-
         } catch (PDOException $e) {
-            echo "Error: ".$e;
+            echo "Error: " . $e;
         }
     }
 
-    
+    public static function _setExamenActivo($numeroExamen)
+    {
+        self::iniciaConexion();
+
+
+        try {
+            //como voy a ocupar una variable, hago el query con prepare 
+
+            $decSEL = self::$conexionDB->prepare("SELECT EstatusEx FROM ParametrosExamen WHERE idExamen = :num");
+
+            $decSEL->execute([
+                ':num' => $numeroExamen
+            ]);
+
+            if ($decSEL->rowCount()==0)
+            {
+                echo "ID de examen no encontrado";
+
+
+                exit;
+            } else {
+                self::$conexionDB->query("CALL proc_syncEstatusInactivo()");
+
+                $declararUpdate = self::$conexionDB->prepare("UPDATE ParametrosExamen SET EstatusEx = 'ACTIVO' WHERE idExamen = :num");
+
+                $declararUpdate->execute([
+                    ':num' => $numeroExamen
+                ]);
+
+                echo "Examen actualizado al ID: " . $numeroExamen. "<br> Recargar la pagina. ";
+
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e;
+        }
+    }
 }
