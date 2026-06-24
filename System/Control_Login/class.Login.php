@@ -1,6 +1,6 @@
 <?php
-
-include_once(__DIR__ . '/../ParteAdmin/Clases/class.DataManager.php');
+//Datamanager:
+include_once(__DIR__ . '../Clases/class.DataManager.php');
 
 
 class Login

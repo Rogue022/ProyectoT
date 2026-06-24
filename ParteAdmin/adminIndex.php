@@ -6,7 +6,7 @@ date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 /*Cabecera lateral */
-include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/cabeceraLateral.php';
 
 ?>
 
@@ -48,4 +48,4 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
 </main>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/Templates/piePagina.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/piePagina.php'; ?>

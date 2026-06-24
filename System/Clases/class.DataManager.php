@@ -188,22 +188,16 @@ class DataManager
     public static function _setExamenActivo($numeroExamen)
     {
         self::iniciaConexion();
-
-
+        
         try {
             //como voy a ocupar una variable, hago el query con prepare 
-
             $decSEL = self::$conexionDB->prepare("SELECT EstatusEx FROM ParametrosExamen WHERE idExamen = :num");
 
-            $decSEL->execute([
-                ':num' => $numeroExamen
-            ]);
+            $decSEL->execute([':num' => $numeroExamen]);
 
             if ($decSEL->rowCount()==0)
             {
                 echo "ID de examen no encontrado";
-
-
                 exit;
             } else {
                 self::$conexionDB->query("CALL proc_syncEstatusInactivo()");

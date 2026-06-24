@@ -1,5 +1,6 @@
 <?php
-include("../Control_Login/class.Login.php");
+//Loging 
+include_once(__DIR__ . '/class.Login.php');
 
 
 class Sesion

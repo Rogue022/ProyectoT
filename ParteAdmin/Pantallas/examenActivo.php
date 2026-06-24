@@ -1,4 +1,5 @@
-<?php include("../Templates/cabeceraLateral.php"); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/cabeceraLateral.php'; ?>
+
 
 <div class="container">
     <div class="row justify-content-center align-items-center g-2">
@@ -29,7 +30,7 @@
 </div>
 <script type="text/javascript">
     $examenActivo = document.getElementById('muestraActividad')
-    fetch('/ParteAdmin/Clases/infoExamen.php', {
+    fetch('/ParteAdmin/Controladores/infoExamen.php', {
             method: 'POST',
         })
         .then(respuesta => {
@@ -50,7 +51,7 @@
 
         const datosForm = new FormData(this);
 
-        fetch('../ParteAdmin/Clases/setExamen.php', {
+        fetch('/ParteAdmin/Controladores/setExamen.php', {
                 method: 'POST',
                 body: datosForm
 
@@ -68,4 +69,5 @@
     });
 </script>
 
-<?php include("../Templates/piePagina.php"); ?>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/piePagina.php'; ?>

@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include_once ('Control_Login/class.Login.php');
-include_once ('ParteAdmin/Clases/class.DataManager.php');
+include_once ('System/Control_Login/class.Login.php');
+include_once ('System/Clases/class.DataManager.php');
 
 if(isset($_GET['expired'])):
     echo "<p>Tu sesión ha expirado. Por favor inicia sesión. </p>";
@@ -40,13 +40,13 @@ $login->preparaLogin();
                                 <div class="text-center">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <img src="/ImgInicio/ipnlogo.png" class="rounded float-right img-fluid" width="120" height="200" alt="Logo del IPN">
+                                            <img src="/System/Templates/IMG/ipnlogo.png" class="rounded float-right img-fluid" width="120" height="200" alt="Logo del IPN">
                                         </div>
                                         <div class="col">
                                             <h1>Bienvenido</h1>
                                         </div>
                                         <div class="col">
-                                            <img src="/ImgInicio/esimelogo.png" class="rounded float-left img-fluid" width="70" height="150" alt="Logo de la ESIME">
+                                            <img src="/System/Templates/IMG/esimelogo.png" class="rounded float-left img-fluid" width="70" height="150" alt="Logo de la ESIME">
 
                                         </div>
                                     </div>

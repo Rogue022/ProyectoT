@@ -1,5 +1,5 @@
 <!-- Index admin -->
-<?php include("../Templates/cabeceraLateral.php"); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/cabeceraLateral.php'; ?>
 
 <div class="container">
     <div class="row justify-content-center align-items-center g-2">
@@ -30,9 +30,12 @@
     <!-- Muestra resultado de subida  -->
     <div id="mensajeResultado"></div>
     <!-- formulario de ingreso:  -->
-    <?php include("../ParteAdmin/formularioIngreso.php"); ?>
+
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/ParteAdmin/Controladores/formularioIngreso.php'; ?>
+
     <!-- fin formulario de ingreso -->
 </div>
 
 
-<?php include("../Templates/piePagina.php"); ?>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/piePagina.php'; ?>

@@ -1,9 +1,9 @@
 <?php 
-include ("../Control_Login/class.Sesion.php");
+include $_SERVER['DOCUMENT_ROOT']."/System/Control_Login/class.Sesion.php";
 
 $sesion = new Sesion;
 
-//$sesion->empiezaSesion();
+$sesion->empiezaSesion();
 
 ?>
 
@@ -19,7 +19,7 @@ $sesion = new Sesion;
     <title>Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <!-- Hoja de estilos -->
-    <link rel="stylesheet" href="../CSSInicio/estilo.css">
+    <link rel="stylesheet" href="/System/Templates/CSS/estilo.css">
 
 
 </head>
@@ -30,7 +30,7 @@ $sesion = new Sesion;
             <!-- Contenido de la barra lateral -->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">Inicio</a>
+                    <a href="/ParteAdmin/adminIndex.php">Inicio</a>
                 </div>
 
                 <ul class="sidebar-nav">
@@ -38,7 +38,7 @@ $sesion = new Sesion;
                         Tareas del administrador
                     </li>
                     <li class="sidebar-item">
-                        <a href="/ParteAdmin/examenActivo.php" class="sidebar-link">
+                        <a href="/ParteAdmin/Pantallas/examenActivo.php" class="sidebar-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
@@ -60,10 +60,10 @@ $sesion = new Sesion;
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/pantallaCaptura.php" class="sidebar-link">Capturar mediante formulario</a>
+                                <a href="/ParteAdmin/Pantallas/captura.php" class="sidebar-link">Capturar mediante formulario</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/pantallaOCR.php" class="sidebar-link">Capturar mediante OCR</a>
+                                <a href="/ParteAdmin/Pantallas/capturaOCR.php" class="sidebar-link">Capturar mediante OCR</a>
                             </li>
                         </ul>
                     </li>
@@ -97,14 +97,14 @@ $sesion = new Sesion;
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
                                 <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1" />
                             </svg>
-                            Usuarios
+                            Configurar usuarios
                         </a>
                         <ul id="usuarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Profesores</a>
+                                <a href="/ParteAdmin/Pantallas/pantallaRegistroProf.php" class="sidebar-link">Profesores</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Alumnos</a>
+                                <a href="/ParteAdmin/Pantallas/pantallaRegistroProf.php" class="sidebar-link">Alumnos</a>
                             </li>
                         </ul>
                     </li>
@@ -124,11 +124,11 @@ $sesion = new Sesion;
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-icon pe-md-0" data-bs-toggle="dropdown">
-                                <img src="../ImgInicio/ipnlogo.png" class="avatar img-fluid rounded" alt="">
+                                <img src="/System/Templates/IMG/ipnlogo.png" class="avatar img-fluid rounded" alt="">
                             </a>
                             <!-- Menú del avatar -->
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="../Templates/cierre.php" class="dropdown-item">Salir</a>
+                                <a href="/System/Templates/cierre.php" class="dropdown-item">Salir</a>
                             </div>
                         </li>
                     </ul>
