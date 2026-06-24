@@ -1,5 +1,5 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT']."/System/Control_Login/class.Sesion.php";
+include $_SERVER['DOCUMENT_ROOT']."/System/Clases/class.Sesion.php";
 
 $sesion = new Sesion;
 
@@ -101,10 +101,10 @@ $sesion->empiezaSesion();
                         </a>
                         <ul id="usuarios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/Pantallas/pantallaRegistroProf.php" class="sidebar-link">Profesores</a>
+                                <a href="/ParteAdmin/Pantallas/registroProf.php" class="sidebar-link">Profesores</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="/ParteAdmin/Pantallas/pantallaRegistroProf.php" class="sidebar-link">Alumnos</a>
+                                <a href="/ParteAdmin/Pantallas/registroAlumnos.php" class="sidebar-link">Alumnos</a>
                             </li>
                         </ul>
                     </li>

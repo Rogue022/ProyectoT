@@ -6,7 +6,8 @@ date_default_timezone_set('America/Mexico_City');
 setlocale(LC_TIME, 'es_MX.UTF-8');
 
 /*Cabecera lateral */
-include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/cabeceraLateral.php';
+
 ?>
 
 <div class="container">
@@ -37,9 +38,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/Templates/cabeceraLateral.php';
     <!-- Muestra resultado de subida  -->
     <div id="mensajeResultado"></div>
     <!-- formulario de ingreso:  -->
-    <?php include("../ParteAdmin/formularioIngreso.php"); ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/ParteAdmin/Controladores/formularioIngreso.php'; ?>
+
     <!-- fin formulario de ingreso -->
 </div>
 
 
-<?php include("../Templates/piePagina.php"); ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/System/Templates/piePagina.php'; ?>
